@@ -1,0 +1,38 @@
+{
+  "name": "@projects/vue-gui-admin",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "dev": "vite",
+    "serve": "npm run dev",
+    "build": "rimraf dist && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "@gui-pkg/enums": "workspace:*",
+    "@gui-pkg/request": "workspace:*",
+    "@gui-pkg/utils": "workspace:*",
+    "@vueuse/core": "^9.3.0",
+    "ant-design-vue": "^3.2.13",
+    "dayjs": "^1.11.5",
+    "nprogress": "^0.2.0",
+    "path-to-regexp": "^6.2.0",
+    "pinia": "^2.0.21",
+    "vue": "3.2.40",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@config/css-preprocess": "workspace:*",
+    "@config/vite": "workspace:*",
+    "@gui-pkg/types": "workspace:*",
+    "@purge-icons/generated": "^0.8.1",
+    "typescript": "^4.8.3",
+    "vite": "3.0.9",
+    "vue-tsc": "^1.0.3"
+  },
+  "engines": {
+    "node": "^12 || >=14"
+  }
+}

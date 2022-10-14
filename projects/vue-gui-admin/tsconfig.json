@@ -1,0 +1,21 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "#/*": ["types/*"]
+    },
+    "lib": ["dom", "esnext"],
+    "types": [
+      "vite/client",
+      "@gui-pkg/enums",
+      "@gui-pkg/types/shims/pinia",
+      "@gui-pkg/types/shims/vue-router",
+      "ant-design-vue/typings/global"
+    ]
+  },
+  "include": ["src", "vite.config.ts"]
+}

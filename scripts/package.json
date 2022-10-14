@@ -1,0 +1,14 @@
+{
+  "name": "scripts",
+  "private": true,
+  "bin": {},
+  "scripts": {
+    "dev": "pnpm esno ./src/dev.ts",
+    "build": "pnpm esno ./src/build.ts"
+  },
+  "devDependencies": {
+    "@types/prompts": "^2.4.1",
+    "execa": "^6.1.0",
+    "prompts": "^2.4.2"
+  }
+}
