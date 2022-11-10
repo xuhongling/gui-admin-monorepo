@@ -50,4 +50,8 @@ declare global {
     VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE: boolean
     VITE_USE_IMAGEMIN: boolean
   }
+
+  interface Window {
+    localStorage?: any;
+  }
 }

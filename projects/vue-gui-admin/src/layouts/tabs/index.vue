@@ -107,9 +107,9 @@
     MinusOutlined,
   } from '@ant-design/icons-vue';
   import { Dropdown, Tabs, message, Menu } from 'ant-design-vue';
-  import { Icon } from '@/components/Icon';
+  import { Icon } from '@gui-pkg/components';
   import type { RouteLocation } from 'vue-router';
-  // import { storage } from '@gui-pkg/utils';
+  import { useWebStorage } from '@/hooks/web/useWebStorage';
   import { TABS_ROUTES } from '@gui-pkg/enums';
   import { useMultipleTabWithOutStore, blackList } from '@/store/multipleTab';
   import { useKeepAliveStoreWithOut } from '@/store/keepAlive';
@@ -121,6 +121,7 @@
   const router = useRouter();
   const multipleTabStore = useMultipleTabWithOutStore();
   const keepAliveStore = useKeepAliveStoreWithOut();
+  const { getWebStorage, setWebStorage } = useWebStorage();
 
   const activeKey = computed(() => multipleTabStore.getCurrentTab?.fullPath);
 
@@ -139,7 +140,7 @@
   let routes: RouteItem[] = [];
 
   try {
-    const routesStr = localStorage.getLocal(TABS_ROUTES) as string | null | undefined;
+    const routesStr = getWebStorage(TABS_ROUTES) as string | null | undefined;
     routes = routesStr ? JSON.parse(routesStr) : [getSimpleRoute(route)];
   } catch (e) {
     routes = [getSimpleRoute(route)];
@@ -159,7 +160,7 @@
 
   // 在页面关闭或刷新之前，保存数据
   window.addEventListener('beforeunload', () => {
-    localStorage.setLocal(TABS_ROUTES, JSON.stringify(tabsList.value));
+    setWebStorage(TABS_ROUTES, JSON.stringify(tabsList.value));
   });
 
   // 目标路由是否等于当前路由

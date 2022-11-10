@@ -1,12 +1,21 @@
 {
-  "name": "components",
+  "name": "@gui-pkg/components",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "./index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "@gui-pkg/utils": "workspace:*",
+    "@iconify/iconify": "^3.0.0",
+    "vue": "3.2.40",
+    "vxe-table": "^4.3.5"
+  },
+  "devDependencies": {
+    "@purge-icons/generated": "^0.9.0",
+    "@gui-pkg/types": "workspace:*"
+  }
 }

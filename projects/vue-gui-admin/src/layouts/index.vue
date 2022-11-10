@@ -37,16 +37,17 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .layout {
     display: flex;
+    width: 100%;
     height: 100vh;
     overflow: hidden;
 
     .ant-layout {
+      min-height: 100%;
       overflow: hidden;
     }
 
     .layout-content {
-      flex: none;
-      width: 100%;
+      flex: 1;
     }
 
     ::v-deep(.ant-layout-sider-light .ant-layout-sider-trigger) {

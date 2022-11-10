@@ -1,7 +1,0 @@
-{
-  "name": "@gui-pkg/constants",
-  "version": "0.1.0",
-  "main": "index.ts",
-  "module": "index.ts",
-  "license": "MIT"
-}

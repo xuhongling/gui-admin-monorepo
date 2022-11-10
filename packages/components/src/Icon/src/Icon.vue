@@ -10,9 +10,9 @@
 <script lang="ts">
   import type { PropType } from 'vue';
   import { defineComponent, ref, watch, onMounted, nextTick, unref, computed, CSSProperties } from 'vue';
-  import SvgIcon from './SvgIcon.vue';
+  import SvgIcon from '../../SvgIcon/SvgIcon.vue';
   import Iconify from '@purge-icons/generated';
-  import { isString } from '@gui-pkg/utils';
+  import { isString, propTypes } from '@gui-pkg/utils';
 
   const SVG_END_WITH_FLAG = '|svg';
   export default defineComponent({
@@ -20,22 +20,16 @@
     components: { SvgIcon },
     props: {
       // icon name
-      icon: String,
+      icon: propTypes.string,
       // icon color
-      color: String,
+      color: propTypes.string,
       // icon size
       size: {
         type: [String, Number] as PropType<string | number>,
         default: 16,
       },
-      spin: {
-        type: Boolean,
-        default: false,
-      },
-      prefix: {
-        type: String,
-        default: '',
-      },
+      spin: propTypes.bool.def(false),
+      prefix: propTypes.string.def(''),
     },
     setup(props) {
       const elRef = ref<ElRef>(null);

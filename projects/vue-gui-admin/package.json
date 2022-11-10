@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@gui-pkg/components": "workspace:*",
     "@gui-pkg/enums": "workspace:*",
     "@gui-pkg/request": "workspace:*",
     "@gui-pkg/utils": "workspace:*",

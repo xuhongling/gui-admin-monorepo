@@ -1,3 +1,3 @@
 export * from './appEnum'
 export * from './cacheEnum'
-export * from './pageEnum'
+export * from './router'

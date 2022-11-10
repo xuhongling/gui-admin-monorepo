@@ -27,7 +27,7 @@
   import { type PropType, computed } from 'vue';
   import type { RouteRecordRaw } from 'vue-router';
   import { defineComponent } from 'vue';
-  import Icon from '@/components/Icon/index';
+  import { Icon } from '@gui-pkg/components';
   import { useMenuSetting } from '@/hooks/setting/useAppSetting';
 
   export default defineComponent({

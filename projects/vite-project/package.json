@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gui-pkg/components": "workspace:*",
     "vue": "3.2.40"
   },
   "devDependencies": {

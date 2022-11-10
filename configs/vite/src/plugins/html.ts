@@ -14,7 +14,6 @@ export async function configHtmlPlugin(
 ) {
   const { VITE_GLOB_APP_TITLE, VITE_PUBLIC_PATH } = env
   const { version } = await readPackageJSON(root)
-
   const path = VITE_PUBLIC_PATH.endsWith('/') ? VITE_PUBLIC_PATH : `${VITE_PUBLIC_PATH}/`
 
   const getAppConfigSrc = () => {

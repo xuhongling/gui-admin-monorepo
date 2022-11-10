@@ -17,12 +17,8 @@ type PartialState = Partial<Store['$state']>
 
 const STORAGE_NAMESPACE = '__STORE__'
 
-export const createPersistPlugin = ({
-  defaultStorage = localStorage,
-  namespace = STORAGE_NAMESPACE,
-}: CreateOptions = {}) => {
-  const getDefaultStorage = (strategy: PersistStrategy) =>
-    strategy.storage || defaultStorage
+export const createPersistPlugin = ({ defaultStorage = localStorage, namespace = STORAGE_NAMESPACE }: CreateOptions = {}) => {
+  const getDefaultStorage = (strategy: PersistStrategy) => strategy.storage || defaultStorage
 
   const getRootStore = (strategy: PersistStrategy) => {
     if (!namespace) {

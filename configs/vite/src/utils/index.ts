@@ -18,7 +18,6 @@ export interface ViteEnv {
 // Read all environment variable configuration files to process.env
 export function wrapperEnv(envConf: Record<string, any>): ViteEnv {
   const viteEnv: Partial<ViteEnv> = {}
-
   for (const key of Object.keys(envConf)) {
     let realname = envConf[key].replace(/\\n/g, '\n')
     realname =

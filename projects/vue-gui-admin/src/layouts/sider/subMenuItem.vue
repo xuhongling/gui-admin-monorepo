@@ -27,7 +27,7 @@
   import { type PropType, computed } from 'vue';
   import type { RouteRecordRaw } from 'vue-router';
   import { defineComponent, toRefs, reactive } from 'vue';
-  import Icon from '@/components/Icon/index';
+  import { Icon } from '@gui-pkg/components';
 
   export default defineComponent({
     name: 'LayoutMenuItem',

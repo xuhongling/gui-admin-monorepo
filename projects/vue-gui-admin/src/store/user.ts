@@ -11,6 +11,8 @@ import { usePermissionStore } from '@/store/permission';
 import { RouteRecordRaw } from 'vue-router';
 import { PAGE_NOT_FOUND_ROUTE } from '@/router/routes/basic';
 import { isArray } from '@gui-pkg/utils';
+import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '@gui-pkg/enums';
+import { useWebStorage } from '@/hooks/web/useWebStorage';
 import { h } from 'vue';
 
 interface UserState {
@@ -20,6 +22,8 @@ interface UserState {
   sessionTimeout?: boolean;
   lastUpdateTime: number;
 }
+
+const { getWebStorage, setWebStorage, clearAllWebStorage } = useWebStorage();
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -37,13 +41,13 @@ export const useUserStore = defineStore({
   }),
   getters: {
     getUserInfo(): UserInfo {
-      return this.userInfo || ({} as UserInfo);
+      return this.userInfo || getWebStorage<UserInfo>(USER_INFO_KEY) || ({} as UserInfo);
     },
     getToken(): string {
-      return this.token as string;
+      return this.token as string || getWebStorage<string>(TOKEN_KEY);
     },
     getRoleList(): string[] {
-      return this.roleList.length > 0 ? this.roleList : [];
+      return this.roleList.length > 0 ? this.roleList : getWebStorage<string[]>(ROLES_KEY);
     },
     getSessionTimeout(): boolean {
       return !!this.sessionTimeout;
@@ -56,13 +60,17 @@ export const useUserStore = defineStore({
     /**登录成功保存token */
     setToken(token: string) {
       this.token = token ? token : '';
+      const ex = 7 * 24 * 60 * 60 * 1000;
+      setWebStorage(TOKEN_KEY, this.token, ex);
     },
     setRoleList(roleList: string[]) {
       this.roleList = roleList;
+      setWebStorage(ROLES_KEY, roleList);
     },
     setUserInfo(info: UserInfo | null) {
       this.userInfo = info;
       this.lastUpdateTime = new Date().getTime();
+      setWebStorage(USER_INFO_KEY, info);
     },
     setSessionTimeout(flag: boolean) {
       this.sessionTimeout = flag;
@@ -73,6 +81,7 @@ export const useUserStore = defineStore({
       this.token = '';
       this.roleList = [];
       this.sessionTimeout = false;
+      clearAllWebStorage();
     },
     /**登录 */
     async login(

@@ -10,5 +10,6 @@ export * from './tree'
 export * from './router'
 export * from './mitt'
 export * from './log'
+export * from './propTypes'
 
 export * from 'lodash-es'
