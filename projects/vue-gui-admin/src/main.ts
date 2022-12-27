@@ -1,8 +1,6 @@
-// import 'virtual:windi-base.css';
-/*import 'virtual:windi-components.css';
-import 'virtual:windi-utilities.css';
+import '@/styles'
 // Register icon sprite
-import 'virtual:svg-icons-register';*/
+import 'virtual:svg-icons-register';
 import App from './App.vue';
 import { createApp } from 'vue';
 import { initApplication } from './init-application';
@@ -10,8 +8,8 @@ import { router, setupRouter } from '@/router';
 import { setupRouterGuard } from '@/router/guard';
 import { pinia, registerGlobalComponents } from '@/internal';
 
+import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.variable.css';
-import '@/styles/index.less';
 
 async function bootstrap() {
   const app = createApp(App);
@@ -25,6 +23,9 @@ async function bootstrap() {
 
   // Register global components
   registerGlobalComponents(app);
+
+  // 注册Antd全局组件
+  app.use(Antd);
 
   // 配置路由
   setupRouter(app);

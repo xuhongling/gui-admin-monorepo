@@ -225,6 +225,7 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .tabs-view {
     border-top: 1px solid #eee;
+
     ::v-deep(.tabs) {
       .ant-tabs-nav {
         user-select: none;
@@ -245,10 +246,12 @@
         display: flex;
         padding: 0;
         margin: 0;
+
         .anticon-close {
           padding-left: 6px;
         }
       }
+
       .ant-tabs-tab {
         height: calc(@multiple-height - 4px);
         padding: 2px 12px 0 14px;
@@ -256,9 +259,11 @@
         line-height: calc(@multiple-height - 4px);
         color: #000000;
         background: #fff;
+
         .ant-tabs-tab-remove {
           width: unset;
         }
+
         .anticon-close {
           width: 14px;
           padding-left: 8px;
@@ -266,38 +271,46 @@
           visibility: hidden;
           transition: width 0.3s;
         }
+
         &:hover {
           .anticon-close {
             visibility: visible;
           }
+
           .ant-tabs-tab-remove {
             width: unset;
           }
         }
       }
+
       .ant-tabs-tab-active {
         position: relative;
         background: @primary-color;
         transition: none;
+
         .ant-tabs-tab-btn {
           color: #fff;
         }
+
         .anticon-close {
           width: 14px;
           visibility: visible;
           padding-left: 8px;
           color: #fff;
         }
+
         .ant-tabs-tab-remove {
           width: unset;
         }
       }
     }
+
     ::v-deep(.ant-dropdown) {
       .describe {
         margin-left: 10px;
       }
     }
+
     .ant-dropdown-link {
       display: inline-block;
       width: 36px;
@@ -307,14 +320,16 @@
       color: rgba(0, 0, 0, 0.45);
       text-align: center;
       cursor: pointer;
+
       &:hover {
         color: rgba(0, 0, 0, 0.85);
       }
     }
 
     .tabs-view-content {
-      height: calc(100vh - @header-height - @multiple-height);
+      height: calc(100vh - @header-height);
       overflow: auto;
+      padding: 20px;
     }
   }
 </style>

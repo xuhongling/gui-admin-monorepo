@@ -1,5 +1,3 @@
-@import './normalize.less';
-
 input:-webkit-autofill {
   box-shadow: 0 0 0 1000px white inset !important;
 }
@@ -49,5 +47,96 @@ body {
 
 .ant-image-preview-root img {
   display: unset;
+}
+
+/**新增CSS*/
+//input框样式
+.ant-form-item-control-input{
+  display: block;
+  line-height: 32px;
+}
+
+.ant-col{
+  width: auto;
+}
+.grConfrim{
+  .ant-modal-body{
+    background: url(../assets/images/tips.png) right top no-repeat;
+  }
+  .ant-modal-content,.ant-modal-header{
+    border-radius: 8px !important;
+  }
+}
+.grModal,.grDialog{
+  .ant-modal-content{
+    border-radius: 8px !important;
+    position: relative;
+  }
+
+  .ant-modal-header{
+    border-radius: 8px !important;
+    height: 80px;
+
+    .ant-modal-title{
+      line-height: 58px;
+    }
+  }
+}
+.grLayout,.grTable,.grModal,.grDialog,.grDrawer,.guiCard {
+  .ant-form-item-control-input-content{
+    .ant-select,.ant-input,
+    .ant-picker,.ant-input-number,
+    .ant-input-affix-wrapper{
+      width: 272px !important;
+      max-width: 272px !important;
+      border-radius: 5px !important;
+    }
+    .ant-select-selector{
+      border-radius: 5px !important;
+    }
+    .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector,
+    .ant-input-disabled{
+      color: #333 !important;
+      background-color: #E5E5E5 !important;
+    }
+  }
+}
+
+.grDrawer{
+  .ant-drawer-content{
+    border-radius: 8px 0 0 8px;
+  }
+}
+
+// 修改antd card样式
+.ant-card {
+  border-radius: 4px !important;
+}
+.guiCard {
+  .ant-card-head {
+    border-bottom: transparent;
+    .ant-card-head-title {
+      padding: 10px 0 0 0 !important;
+      color: #333;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      text-indent: 26px;
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 22px;
+        background: url('@/assets/images/title_tips.png') no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 14px;
+      }
+    }
+    .ant-card-extra {
+      padding: 10px 0 0 0 !important;
+    }
+  }
 }
 

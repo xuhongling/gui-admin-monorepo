@@ -9,12 +9,12 @@
   "dependencies": {
     "@vue/runtime-core": "3.2.36",
     "@vue/shared": "3.2.40",
-    "@vueuse/core": "^8.9.4",
-    "@vueuse/shared": "^8.9.4",
+    "@vueuse/core": "^9.3.0",
+    "@vueuse/shared": "^9.3.0",
     "dayjs": "^1.11.4",
     "lodash-es": "^4.17.21",
     "pinia": "2.0.14",
-    "vue": "3.2.40",
+    "vue": "3.2.45",
     "vue-router": "^4.1.5",
     "vue-types": "^4.2.1"
   },

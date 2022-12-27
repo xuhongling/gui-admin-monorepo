@@ -20,7 +20,7 @@
   import MenuItem from './menuItem.vue';
   import { getMenus, getShallowMenus } from '@/router/menus';
   import { usePermissionStoreWithOut } from '@/store/permission';
-  import { useGo } from '@/hooks/web/usePage';
+  import { useGo } from '@gui-pkg/hooks';
   import { openWindow, isUrl } from '@gui-pkg/utils';
   import { useMenuSetting } from '@/hooks/setting/useAppSetting';
 

@@ -11,5 +11,9 @@ export * from './router'
 export * from './mitt'
 export * from './log'
 export * from './propTypes'
+export * from './with-install'
+export * from './slot'
 
 export * from 'lodash-es'
+
+export { tryOnUnmounted, tryOnMounted } from '@vueuse/core'

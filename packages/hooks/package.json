@@ -8,8 +8,10 @@
     "@gui-pkg/enums": "workspace:*",
     "@gui-pkg/utils": "workspace:*",
     "@vueuse/core": "^9.3.0",
+    "echarts": "^5.3.2",
     "lodash-es": "^4.17.21",
-    "vue": "3.2.40"
+    "vue": "3.2.45",
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",

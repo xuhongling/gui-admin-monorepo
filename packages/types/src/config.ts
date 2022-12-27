@@ -35,14 +35,17 @@ export interface GlobConfig {
 }
 
 export interface GlobEnvConfig {
-  // Site title
+  // Site title 网站标题
   VITE_GLOB_APP_TITLE: string
-  // Service interface url
+  // Service interface url 服务接口url
   VITE_GLOB_API_URL: string
-  // Project abbreviation
+  // Project abbreviation 项目简称
   VITE_GLOB_APP_SHORT_NAME: string
+  // 是否开启本地的接口调试地址
+  VITE_LOCALHOST?: string
+  // 本地的接口调试地址
+  VITE_LOCALHOST_API_URL?: string
 }
-
 
 export interface MultiTabsSetting {
   cache: boolean;

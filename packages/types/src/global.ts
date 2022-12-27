@@ -1,4 +1,4 @@
-import type { VNodeChild, PropType as VuePropType } from 'vue'
+import type { VNodeChild, PropType as VuePropType, Plugin } from 'vue'
 import type { RouteRecordItem as IRouteRecordItem } from './router'
 
 declare global {
@@ -34,6 +34,8 @@ declare global {
     [P in keyof T]?: DeepPartial<T[P]>
   }
 
+  type SFCWithInstall<T> = T & Plugin
+
   // import.meta
   interface ImportMetaEnv extends ViteEnv {
     __: never
@@ -49,6 +51,7 @@ declare global {
     VITE_BUILD_COMPRESS: 'gzip' | 'brotli' | 'none'
     VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE: boolean
     VITE_USE_IMAGEMIN: boolean
+    VITE_GLOB_UPLOAD_URL: string
   }
 
   interface Window {

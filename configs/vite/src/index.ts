@@ -8,7 +8,7 @@ import { configVitePlugins } from './plugins'
 import { createPreset } from './presets'
 import { OUTPUT_DIR } from './constants'
 import dayjs from 'dayjs'
-import { cyan } from 'picocolors'
+import { red } from 'picocolors'
 
 export * from './constants'
 
@@ -17,9 +17,7 @@ export type ViteConfig = Promise<UserConfig | UserConfigFn>
 export async function createViteConfig(cwd: string, framework: FrameworkType,): Promise<UserConfig | UserConfigFn> {
   console.log()
   console.log(
-    cyan(
-      '当前处于开发测试阶段，还会有大量更新，仅供参考，请勿用于实际项目！\n',
-    ),
+    red('当前处于开发测试阶段，还会有大量更新完善，如遇到问题，请及时反馈！\n'),
   )
   console.log()
 
@@ -35,6 +33,7 @@ export async function createViteConfig(cwd: string, framework: FrameworkType,): 
       VITE_PROXY,
       VITE_PORT,
       VITE_DROP_CONSOLE,
+      VITE_USE_HTTPS,
     } = viteEnv
     const commonConfig: UserConfig = {
       root,
@@ -57,10 +56,11 @@ export async function createViteConfig(cwd: string, framework: FrameworkType,): 
         }),
       },
       server: {
+        https: VITE_USE_HTTPS,
         open: true,
         host: true,
         port: Number(VITE_PORT),
-        proxy: resolveProxy(VITE_PROXY),
+        proxy: !VITE_USE_HTTPS ? resolveProxy(VITE_PROXY) : undefined,
       },
       build: {
         target: 'es2020',

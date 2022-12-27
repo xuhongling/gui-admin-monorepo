@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useGo } from '@/hooks/web/usePage';
+  import { useGo } from '@gui-pkg/hooks';
   import { PageEnum } from '@gui-pkg/enums';
   import { useUserStoreWithOut } from '@/store/user';
   import { Layout } from 'ant-design-vue';
@@ -52,12 +52,18 @@
       align-items: center;
       cursor: pointer;
       img {
-        width: 46px;
-        height: 46px;
+        width: 40px;
+        height: 40px;
       }
       h2.title {
-        font-size: 18px;
-        color: @primary-color;
+        font-size: 20px;
+        margin: 0px 0px 0px 8px;
+        // color: @primary-color;
+        background: linear-gradient(178.26deg, #03D2FF 18.82%, #037AFF 98.52%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
         font-weight: bold;
       }
     }

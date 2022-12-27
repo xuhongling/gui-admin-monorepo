@@ -59,6 +59,13 @@ function isUrl(path: string): boolean {
   return reg.test(path)
 }
 
+/**
+ * @description:  Set ui mount node
+ */
+const getPopupContainer = (node?: HTMLElement): HTMLElement => {
+  return (node?.parentNode as HTMLElement) ?? document.body
+}
+
 export {
   isUrl,
   deepMerge,
@@ -67,4 +74,5 @@ export {
   NOOP,
   isClient,
   isWindow,
+  getPopupContainer,
 }

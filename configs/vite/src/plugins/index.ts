@@ -6,6 +6,7 @@ import { configHtmlPlugin } from './html'
 import { configCompressPlugin } from './compress'
 import { configSvgIconsPlugin } from './svg-icons'
 import { createConfigPlugin } from './config'
+import { configHttpsPlugin } from './https'
 
 export async function configVitePlugins(
   root: string,
@@ -28,6 +29,9 @@ export async function configVitePlugins(
 
   // vite-plugin-svg-icons
   vitePlugins.push(configSvgIconsPlugin(isBuild))
+
+  // http2
+  vitePlugins.push(configHttpsPlugin(viteEnv))
 
   // The following plugins only work in the production environment
   if (isBuild) {
