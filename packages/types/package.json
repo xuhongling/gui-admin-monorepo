@@ -1,0 +1,13 @@
+{
+  "name": "@gui-pkg/types",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@gui-pkg/enums": "workspace:*",
+    "pinia": "2.0.30",
+    "vue": "3.2.47",
+    "vue-router": "^4.1.6"
+  }
+}

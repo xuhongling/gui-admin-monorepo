@@ -1,0 +1,53 @@
+{
+  "name": "gui-admin-monorepo",
+  "private": true,
+  "version": "1.0.5",
+  "author": {
+    "name": "xuhongling",
+    "email": "xuhongling@live.cn",
+    "url": "https://github.com/xuhongling"
+  },
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "dev": "pnpm --filter scripts dev",
+    "build": "pnpm --filter scripts build",
+    "clean": "turbo run clean && rimraf \"{configs,packages,projects,scripts}/**/*{node_modules,dist,.turbo}\" && rimraf node_modules",
+    "format": "pnpm run lint:eslint & pnpm run lint:stylelint & pnpm run lint:prettier",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "pnpm run stub",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write  \"{packages,projects,configs,scripts}/**/*.{js,json,ts,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --fix ",
+    "stub": "pnpm --filter @config/** prepack",
+    "turbo:build": "turbo run build --parallel",
+    "turbo:dev": "turbo run dev --parallel",
+    "turbo:preview": "turbo run preview --parallel",
+    "changeset": "changeset",
+    "version": "pnpm run changeset version",
+    "test": "vitest"
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "@config/lint": "workspace:*",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.14.2",
+    "cross-env": "^7.0.3",
+    "esno": "^0.16.3",
+    "fs-extra": "^10.1.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "tsconfig": "workspace:*",
+    "turbo": "^1.8.3",
+    "typescript": "^4.9.5",
+    "unbuild": "^1.1.2"
+  },
+  "engines": {
+    "pnpm": ">=7.0.0",
+    "node": ">=16"
+  },
+  "packageManager": "^pnpm@7.11.0"
+}

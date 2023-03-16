@@ -1,0 +1,25 @@
+{
+  "name": "@gui-pkg/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@vue/runtime-core": "3.2.47",
+    "@vueuse/core": "^9.12.0",
+    "@vueuse/shared": "^9.12.0",
+    "dayjs": "^1.11.5",
+    "lodash-es": "^4.17.21",
+    "pinia": "2.0.30",
+    "vue": "3.2.47",
+    "vue-router": "^4.1.6",
+    "vue-types": "^4.2.1",
+    "sortablejs": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.6",
+    "@gui-pkg/types": "workspace:*"
+  }
+}

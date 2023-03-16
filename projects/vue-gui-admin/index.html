@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue-gui-admin</title>
+  </head>
+  <!-- 配合 postcss-pxtorem 使用 -->
+  <style type="text/css">
+    :root {
+      font-size: 14px;
+    }
+    @media all
+      and (-moz-min-device-pixel-ratio: 1.09) and (-moz-max-device-pixel-ratio: 1.18),
+          (-webkit-min-device-pixel-ratio: 1.09) and (-webkit-max-device-pixel-ratio: 1.18),
+          (min-resolution: 1.09dppx) and (max-resolution: 1.18dppx) {
+          :root {
+              font-size: 14px !important;
+          }
+      }
+      @media all
+      and (-moz-min-device-pixel-ratio: 1.19) and (-moz-max-device-pixel-ratio: 1.28),
+          (-webkit-min-device-pixel-ratio: 1.19) and (-webkit-max-device-pixel-ratio: 1.28),
+          (min-resolution: 1.19dppx) and (max-resolution: 1.28dppx) {
+          :root {
+              font-size: 13px !important;
+          }
+      }
+      @media all
+      and (-moz-min-device-pixel-ratio: 1.29) and (-moz-max-device-pixel-ratio: 1.4),
+          (-webkit-min-device-pixel-ratio: 1.29) and (-webkit-max-device-pixel-ratio: 1.4),
+          (min-resolution: 1.29dppx) and (max-resolution: 1.4dppx) {
+          :root {
+              font-size: 12px !important;
+          }
+      }
+      @media all
+      and (-moz-min-device-pixel-ratio: 1.41) and (-moz-max-device-pixel-ratio: 1.6),
+          (-webkit-min-device-pixel-ratio: 1.41) and (-webkit-max-device-pixel-ratio: 1.6),
+          (min-resolution: 1.41dppx) and (max-resolution: 1.6dppx) {
+          :root {
+              font-size: 10px !important;
+          }
+      }
+  </style>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

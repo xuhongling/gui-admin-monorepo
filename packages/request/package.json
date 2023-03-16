@@ -1,0 +1,16 @@
+{
+  "name": "@gui-pkg/request",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "module": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@gui-pkg/types": "workspace:*",
+    "@gui-pkg/utils": "workspace:*",
+    "axios": "^1.3.1",
+    "qs": "^6.11.0"
+  },
+  "devDependencies": {
+    "@types/qs": "^6.9.7"
+  }
+}
