@@ -1,7 +1,0 @@
-packages:
-  - 'apps/*'
-  - 'packages/*'
-  - 'packages/components/*'
-  - 'projects/*'
-  - 'configs/*'
-  - 'scripts'

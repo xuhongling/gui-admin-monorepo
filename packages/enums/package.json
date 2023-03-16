@@ -1,7 +1,0 @@
-{
-  "name": "@gui-pkg/enums",
-  "version": "1.0.0",
-  "main": "index.ts",
-  "module": "index.ts",
-  "license": "MIT"
-}

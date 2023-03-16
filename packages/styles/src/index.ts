@@ -1,5 +1,0 @@
-import './tailwind.css'
-import './common.css'
-import './entry.css'
-import './variables.css'
-import './normalize.less'
