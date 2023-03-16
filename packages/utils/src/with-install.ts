@@ -1,5 +1,3 @@
-import { NOOP } from '@vue/shared'
-
 export const withInstall = <T, E extends Record<string, any>>(
   main: T,
   extra?: E,
@@ -26,8 +24,3 @@ export const withInstallFunction = <T>(fn: T, name: string) => {
   return fn as SFCWithInstall<T>
 }
 
-export const withNoopInstall = <T>(component: T) => {
-  ;(component as SFCWithInstall<T>).install = NOOP
-
-  return component as SFCWithInstall<T>
-}

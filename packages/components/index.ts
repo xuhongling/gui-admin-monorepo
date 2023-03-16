@@ -1,5 +1,0 @@
-export { default as Icon } from './src/Icon/index'
-export { default as SvgIcon } from './src/SvgIcon/index'
-export { default as CountTo } from './src/CountTo/index'
-export { BasicDrawer, useDrawer, useDrawerInner } from './src/Drawer/index'
-export { BasicModal, useModalContext, useModal, useModalInner } from './src/Modal/index'

@@ -111,8 +111,8 @@
   import type { RouteLocation } from 'vue-router';
   import { useWebStorage } from '@/hooks/web/useWebStorage';
   import { TABS_ROUTES } from '@gui-pkg/enums';
-  import { useMultipleTabWithOutStore, blackList } from '@/store/multipleTab';
-  import { useKeepAliveStoreWithOut } from '@/store/keepAlive';
+  import { useMultipleTabWithOutStore, blackList } from '@/store/modules/multipleTab';
+  import { useKeepAliveStoreWithOut } from '@/store/modules/keepAlive';
   import { REDIRECT_NAME } from '@/router/constant';
 
   type RouteItem = Omit<RouteLocation, 'matched' | 'redirectedFrom'>;
@@ -225,12 +225,11 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .tabs-view {
     border-top: 1px solid #eee;
-
     ::v-deep(.tabs) {
       .ant-tabs-nav {
         user-select: none;
         padding: 4px 6px 0 6px;
-        height: @multiple-height;
+        height: var(--tab-bar-height);
         margin: 0;
         background-color: #fff;
         border: 0;
@@ -246,24 +245,20 @@
         display: flex;
         padding: 0;
         margin: 0;
-
         .anticon-close {
           padding-left: 6px;
         }
       }
-
       .ant-tabs-tab {
-        height: calc(@multiple-height - 4px);
+        height: calc(var(--tab-bar-height) - 4px);
         padding: 2px 12px 0 14px;
         font-size: 12px;
-        line-height: calc(@multiple-height - 4px);
+        line-height: calc(var(--tab-bar-height) - 4px);
         color: #000000;
         background: #fff;
-
         .ant-tabs-tab-remove {
           width: unset;
         }
-
         .anticon-close {
           width: 14px;
           padding-left: 8px;
@@ -271,46 +266,38 @@
           visibility: hidden;
           transition: width 0.3s;
         }
-
         &:hover {
           .anticon-close {
             visibility: visible;
           }
-
           .ant-tabs-tab-remove {
             width: unset;
           }
         }
       }
-
       .ant-tabs-tab-active {
         position: relative;
-        background: @primary-color;
+        background: var(--primary-color);
         transition: none;
-
         .ant-tabs-tab-btn {
           color: #fff;
         }
-
         .anticon-close {
           width: 14px;
           visibility: visible;
           padding-left: 8px;
           color: #fff;
         }
-
         .ant-tabs-tab-remove {
           width: unset;
         }
       }
     }
-
     ::v-deep(.ant-dropdown) {
       .describe {
         margin-left: 10px;
       }
     }
-
     .ant-dropdown-link {
       display: inline-block;
       width: 36px;
@@ -320,16 +307,15 @@
       color: rgba(0, 0, 0, 0.45);
       text-align: center;
       cursor: pointer;
-
       &:hover {
         color: rgba(0, 0, 0, 0.85);
       }
     }
 
     .tabs-view-content {
-      height: calc(100vh - @header-height);
+      height: calc(100vh - var(--header-height) - var(--tab-bar-height));
       overflow: auto;
-      padding: 20px;
+      // padding: 16px;
     }
   }
 </style>

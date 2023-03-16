@@ -1,8 +1,8 @@
 import type { Menu, MenuModule } from '@/router/types';
 import type { RouteRecordNormalized } from 'vue-router';
 
-import { useAppStoreWithOut } from '@/store/app';
-import { usePermissionStoreWithOut } from '@/store/permission';
+import { useAppStoreWithOut } from '@/store/modules/app';
+import { usePermissionStoreWithOut } from '@/store/modules/permission';
 import { transformMenuModule, getAllParentPath } from '@/router/helper/menuHelper';
 import { isUrl, filterTree } from '@gui-pkg/utils';
 import { router } from '@/router';
@@ -27,6 +27,7 @@ const getPermissionMode = () => {
   const appStore = useAppStoreWithOut();
   return appStore.getProjectConfig.permissionMode;
 };
+
 const isBackMode = () => {
   return getPermissionMode() === PermissionModeEnum.BACK;
 };

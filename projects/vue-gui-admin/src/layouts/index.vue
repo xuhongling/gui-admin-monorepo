@@ -30,6 +30,7 @@
 
   const { getCollapsed, getSplit } = useMenuSetting();
   const collapsed = ref<boolean>(false);
+
   // 自定义侧边栏菜单收缩和展开时的宽度
   const asiderWidth = computed(() => (collapsed.value ? 80 : 220));
 </script>
@@ -55,7 +56,6 @@
       height: 36px;
       line-height: 36px;
     }
-
     ::v-deep(.ant-layout-sider-children) {
       border-top: 1px solid #eee;
     }

@@ -1,5 +1,5 @@
 import type { Slots } from 'vue'
-import { isFunction } from './is'
+import { isFunction } from '@vueuse/core'
 
 /**
  * @description:  Get slot to prevent empty error

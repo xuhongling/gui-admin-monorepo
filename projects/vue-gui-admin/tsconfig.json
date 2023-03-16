@@ -14,8 +14,9 @@
       "@gui-pkg/enums",
       "@gui-pkg/types/shims/pinia",
       "@gui-pkg/types/shims/vue-router",
-      "ant-design-vue/typings/global"
+      "ant-design-vue/typings/global",
+      "unplugin-vue-define-options/macros-global"
     ]
   },
-  "include": ["src", "vite.config.ts"]
+  "include": ["src", "mock", "vite.config.ts"]
 }

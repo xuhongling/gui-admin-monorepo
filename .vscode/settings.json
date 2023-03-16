@@ -1,11 +1,12 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "volar.tsPlugin": true,
-  "volar.tsPluginStatus": false,
   "npm.packageManager": "pnpm",
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.eol": "\n",
+  "files.associations": {
+    "*.env.*": "dotenv"
+  },
   "search.exclude": {
     "**/node_modules": true,
     "**/*.log": true,
@@ -20,6 +21,7 @@
     "**/.idea": true,
     "**/.vscode": false,
     "**/yarn.lock": true,
+    "**/pnpm-lock.yaml": true,
     "**/tmp": true,
     "out": true,
     "dist": true,
@@ -34,6 +36,17 @@
   "files.exclude": {
     "**/.cache": true,
     "**/.editorconfig": true,
+    "**/.eslintignore": true,
+    "**/.prettierignore": true,
+    "**/.stylelintignore": true,
+    "**/LICENSE": true,
+    ".lintstagedrc.js": true,
+    ".npmrc": true,
+    ".gitpod.yml": true,
+    ".prettierrc.js": true,
+    ".stylelintrc.js": true,
+    ".commitlintrc.js": true,
+    ".eslintrc.js": true,
     "**/.eslintcache": true,
     "**/bower_components": true,
     "**/.idea": true,
@@ -52,54 +65,33 @@
     "**/tmp/**": true,
     "**/bower_components/**": true,
     "**/dist/**": true,
-    "**/yarn.lock": true
+    "**/yarn.lock": true,
+    "**/pnpm-lock.yaml": true
   },
   "stylelint.enable": true,
-  "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
-  "path-intellisense.mappings": {
-    "/@/": "${workspaceRoot}/src"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[less]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
   "[vue]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "source.fixAll.stylelint": true
+      "source.fixAll.eslint": false
     }
   },
+  "i18n-ally.localesPaths": ["packages/locale/src/lang"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sortKeys": true,
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespaces}.{ext}",
+  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.enabledFrameworks": ["vue", "react"],
   "cSpell.words": [
-    "vben",
-    "windi",
+    "gui",
+    "vite",
     "browserslist",
-    "tailwindcss",
     "esnext",
     "antv",
-    "tinymce",
     "qrcode",
     "sider",
     "pinia",
@@ -109,22 +101,23 @@
     "stylelint",
     "esno",
     "vitejs",
-    "sortablejs",
     "mockjs",
-    "codemirror",
     "iconify",
     "commitlint",
-    "vditor",
     "echarts",
-    "cropperjs",
-    "logicflow",
     "vueuse",
     "zxcvbn",
-    "lintstagedrc",
+    "postbuild",
     "brotli",
-    "tailwindcss",
-    "sider",
     "pnpm",
-    "antd"
-  ]
+    "antd",
+    "antdv",
+    "demi",
+    "styl",
+    "unref",
+    "vitest",
+    "esbuild"
+  ],
+  "commentTranslate.multiLineMerge": true,
+  "typescript.suggest.autoImports": false
 }

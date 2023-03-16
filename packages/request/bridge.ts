@@ -24,8 +24,8 @@ export let context: ContextOptions = {
   apiUrl: '',
 }
 
-export const initRequest = async (_context: ContextOptions) => {
-  context = _context
+export const initRequest = async (func: AnyFunction<any>) => {
+  context = func()
 }
 export const setMsg = (func: AnyFunction<any>) => {
   context.msgFunction = func
@@ -33,3 +33,4 @@ export const setMsg = (func: AnyFunction<any>) => {
 export const setNoice = (func: AnyFunction<any>) => {
   context.noticeFunction = func
 }
+

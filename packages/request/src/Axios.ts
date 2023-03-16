@@ -1,5 +1,5 @@
 import type { CreateAxiosOptions } from './axiosTransform'
-import type {AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios'
+import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios'
 import type { RequestOptions, RequestResult } from '@gui-pkg/types'
 import axios from 'axios'
 import qs from 'qs'
@@ -9,7 +9,7 @@ import { ContentTypeEnum, RequestEnum } from './constants'
 export * from './axiosTransform'
 
 /**
- * @description:  axios module
+ * @description: axios module
  */
 export class VAxios {
   private axiosInstance: AxiosInstance
@@ -22,7 +22,7 @@ export class VAxios {
   }
 
   /**
-   * @description:  Create axios instance
+   * @description: Create axios instance
    */
   private createAxios(config: CreateAxiosOptions): void {
     this.axiosInstance = axios.create(config)

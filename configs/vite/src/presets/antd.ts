@@ -1,5 +1,4 @@
 import type { UserConfig } from 'vite'
-import { resolve } from 'path'
 
 export async function createAntdPreset(): Promise<UserConfig> {
   const primaryColor = '#037AFF'
@@ -7,8 +6,8 @@ export async function createAntdPreset(): Promise<UserConfig> {
     optimizeDeps: {
       include: [
         '@ant-design/icons-vue',
-        'ant-design-vue/es/locale/zh_CN',
-        'ant-design-vue/es/locale/en_US',
+        // 'ant-design-vue/es/locale/zh_CN',
+        // 'ant-design-vue/es/locale/en_US',
         'dayjs',
         'dayjs/locale/eu',
         'dayjs/locale/zh-cn',
@@ -20,7 +19,7 @@ export async function createAntdPreset(): Promise<UserConfig> {
       rollupOptions: {
         output: {
           manualChunks: {
-            antdv: ['ant-design-vue', '@ant-design/icons-vue'],
+            // antdv: ['ant-design-vue', '@ant-design/icons-vue'],
             dayjs: ['dayjs'],
           },
         },
@@ -30,7 +29,6 @@ export async function createAntdPreset(): Promise<UserConfig> {
       preprocessorOptions: {
         less: {
           modifyVars: {
-            hack: `true; @import (reference) "${resolve('src/styles/config.less')}";`,
             'primary-color': primaryColor,
             'border-color-base': 'hsv(0, 0, 85%)',
             'font-size-base': '14px',
@@ -48,7 +46,6 @@ export async function createAntdPreset(): Promise<UserConfig> {
             'warning-color': '#EFBD47', //   Warning color
             'link-color': primaryColor, //   Link color
             'app-content-background': '#fafafa', //   Link color
-
             'item-hover-bg': '#f5f5f5',
           },
           // modifyVars: generateModifyVars(),

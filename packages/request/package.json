@@ -7,7 +7,7 @@
   "dependencies": {
     "@gui-pkg/types": "workspace:*",
     "@gui-pkg/utils": "workspace:*",
-    "axios": "^0.27.2",
+    "axios": "^1.3.1",
     "qs": "^6.11.0"
   },
   "devDependencies": {

@@ -1,0 +1,22 @@
+{
+  "name": "@gui-pkg/antdcomponents",
+  "version": "1.0.0",
+  "main": "./index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "@gui-pkg/utils": "workspace:*",
+    "@gui-pkg/hooks": "workspace:*",
+    "@gui-pkg/components": "workspace:*",
+    "ant-design-vue": "^3.2.13",
+    "vue": "3.2.47"
+  },
+  "devDependencies": {
+    "@gui-pkg/types": "workspace:*"
+  }
+}

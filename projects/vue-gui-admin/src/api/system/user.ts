@@ -2,19 +2,21 @@ import { request } from '@gui-pkg/request';
 import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userModel';
 
 enum Api {
-  Login = '/platform/sys/login',
+  Login = '/thinkwater/api/system/login',
   GetUserInfo = '/getUserInfo',
   GetPermCode = '/getPermCode',
 }
+
+const requestOptions = {
+  withToken: false,
+  joinTime: false,
+};
 
 /**
  * @description: user login api
  */
 export function loginApi(params: LoginParams) {
-  return request.post<LoginResultModel>({
-    url: Api.Login,
-    params,
-  });
+  return request.post<LoginResultModel>({url: Api.Login, params }, requestOptions);
 }
 
 /**

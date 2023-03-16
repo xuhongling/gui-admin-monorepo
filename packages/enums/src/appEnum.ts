@@ -1,6 +1,12 @@
 export const SIDE_BAR_MINI_WIDTH = 48;
 export const SIDE_BAR_SHOW_TIT_MINI_WIDTH = 80;
 
+// menu theme enum
+export enum ThemeEnum {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
 /**
  * 权限模式
  */

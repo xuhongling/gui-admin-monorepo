@@ -12,20 +12,12 @@ export function getAppConfigFileName(env: Record<string, any>) {
 }
 
 export function getGlobalConfig(env: Record<string, any>): Readonly<GlobConfig> {
-  const { VITE_GLOB_APP_TITLE, VITE_GLOB_API_URL, VITE_GLOB_APP_SHORT_NAME, VITE_LOCALHOST, VITE_LOCALHOST_API_URL } = getAppConfig(env)
-
-  let apiUrl: string = VITE_GLOB_API_URL
-
-  // 新增是否开启本地的接口调试地址
-  const viteLocalhost = VITE_LOCALHOST === 'true' ? true : VITE_LOCALHOST === 'false' ? false : VITE_LOCALHOST
-  if (viteLocalhost === true) {
-    apiUrl = VITE_LOCALHOST_API_URL ? VITE_LOCALHOST_API_URL : '/'
-  }
+  const { VITE_GLOB_APP_TITLE, VITE_GLOB_API_URL, VITE_GLOB_APP_SHORT_NAME } = getAppConfig(env)
 
   // Take global configuration
   const glob: Readonly<GlobConfig> = {
     title: VITE_GLOB_APP_TITLE,
-    apiUrl: apiUrl,
+    apiUrl: VITE_GLOB_API_URL,
     shortName: VITE_GLOB_APP_SHORT_NAME,
   }
   return glob as Readonly<GlobConfig>

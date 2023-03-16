@@ -10,6 +10,8 @@ export interface RequestOptions {
   // Whether to return native response headers
   // For example: use this attribute when you need to get the response headers
   isReturnNativeResponse?: boolean
+  // Whether to join url
+  joinPrefix?: boolean;
   // Interface address, use the default apiUrl if you leave it blank
   apiUrl?: string | (() => string)
   // Error message prompt type
@@ -24,7 +26,9 @@ export interface RequestOptions {
 export interface RequestResult<T = any> {
   code?: number;
   type?: 'success' | 'error' | 'warning';
-  content?: string;
   data?: T;
+  result: T;
   detail?: T;
+  message?: string;
+  content?: string;
 }

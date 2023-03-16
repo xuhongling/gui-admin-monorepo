@@ -1,7 +1,11 @@
-import type { MenuSetting } from '#/config';
-
+import type { MenuSetting, ProjectConfig } from '@gui-pkg/types';
 import { computed } from 'vue';
-import { useAppStore, ThemeEnum } from '@/store/app';
+import { useAppStore, ThemeEnum } from '@/store/modules/app';
+
+type RootSetting = Omit<
+  ProjectConfig,
+  'locale' | 'headerSetting' | 'menuSetting' | 'multiTabsSetting'
+>
 
 // 项目配置
 export function useRootSetting() {
@@ -9,13 +13,23 @@ export function useRootSetting() {
 
   const getDarkMode = computed(() => appStore.getDarkMode);
 
+  const getPermissionMode = computed(() => appStore.getProjectConfig.permissionMode);
+
+  function setRootSetting(setting: Partial<RootSetting>) {
+    appStore.setProjectConfig(setting)
+  }
+
   function setDarkMode(mode: ThemeEnum) {
     appStore.setDarkMode(mode);
   }
 
+
   return {
-    getDarkMode,
+    setRootSetting,
     setDarkMode,
+
+    getDarkMode,
+    getPermissionMode,
   };
 }
 

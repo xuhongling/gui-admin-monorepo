@@ -8,7 +8,7 @@ import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform'
 import { VAxios } from './Axios'
 import { checkStatus } from './checkStatus'
 import { context } from '../bridge'
-import {isString, isFunction, clone, deepMerge, appendUrlParams, } from '@gui-pkg/utils'
+import { isString, isFunction, clone, deepMerge, appendUrlParams } from '@gui-pkg/utils'
 import { RequestEnum, ResultEnum, ContentTypeEnum } from './constants'
 import { joinTimestamp, formatRequestDate } from './helper'
 
@@ -19,10 +19,7 @@ const transform: AxiosTransform = {
   /**
    * @description: 处理请求数据。如果数据不是预期格式，可直接抛出错误
    */
-  transformRequestHook: (
-    res: AxiosResponse<RequestResult>,
-    options: RequestOptions,
-  ) => {
+  transformRequestHook: (res: AxiosResponse<RequestResult>, options: RequestOptions) => {
     const { isTransformResponse, isReturnNativeResponse } = options
     // 是否返回原生响应头 比如：需要获取响应头时使用该属性
     if (isReturnNativeResponse) {
@@ -34,47 +31,50 @@ const transform: AxiosTransform = {
     if (!isTransformResponse) {
       return res.data
     }
-    // 错误的时候返回
 
     const { data } = res
+
+    // 错误的时候返回
     if (!data) {
       // return '[HTTP] Request has no return value';
       throw new Error('请求出错，请稍候重试')
     }
+
     //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-    const { code, detail, content } = data
+    const { code, result, message } = data
+    const { code: code1, detail, content  } = data
+
+    let resultData = null
+    result ? resultData = result : resultData = detail
 
     // 这里逻辑可以根据项目进行修改
-    const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS
-    // const hasSuccess = data && Reflect.has(data, 'code')
+    const hasSuccess = data && Reflect.has(data, 'code') && (code1 === ResultEnum.SUCCESS || code === 0);
 
     if (hasSuccess) {
       if (content) {
-        context.noticeFunction &&
-          context.noticeFunction.success({
-            content: '成功',
-            meta: content,
-            duration: 2500,
-            keepAliveOnHover: true,
-          })
+        context.noticeFunction /*&& context.noticeFunction.success({
+          content: content,
+          duration: 2000,
+          keepAliveOnHover: true,
+        })*/
       }
       // 请求返回的数据
-      return detail;
+      return resultData;
     }
 
     // context.msgFunction.error(content)
     // throw new Error(content)
     // 在此处根据自己项目的实际情况对不同的code执行不同的操作
     // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
-    let timeoutMsg = ''
+    let timeoutMsg: any = ''
     switch (code) {
       case ResultEnum.TIMEOUT:
         timeoutMsg = '登录超时,请重新登录!'
         context.timeoutFunction?.()
         break
       default:
-        if (content) {
-          timeoutMsg = content
+        if (message) {
+          timeoutMsg = message ? message : content;
         }
     }
 
@@ -94,16 +94,28 @@ const transform: AxiosTransform = {
 
   // 请求之前处理config
   beforeRequestHook: (config, options) => {
-    const { apiUrl, joinParamsToUrl, formatDate, joinTime = true } = options
-
+    const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, joinTime = true } = options
     if (apiUrl) {
       const _apuUrl = isString(apiUrl)
         ? apiUrl
         : isFunction(apiUrl)
         ? apiUrl?.()
         : ''
-      config.url = `${_apuUrl}${config.url}`
+
+      // 处理多个接口 Api Url
+      if (joinPrefix && _apuUrl.startsWith("[[")) {
+        const apiUrlArr = JSON.parse(_apuUrl);
+        for (let i = 0; i < apiUrlArr.length; i++) {
+          const apiUrl = config.url ? config.url : '';
+          if (apiUrl.includes(apiUrlArr[i][0])) {
+            config.url = `${apiUrlArr[i][1]}${config.url}`;
+          }
+        }
+      } else if (joinPrefix){
+        config.url = `${_apuUrl}${config.url}`
+      }
     }
+
     const params = config.params || {}
     const data = config.data || false
     formatDate && data && !isString(data) && formatRequestDate(data)
@@ -232,6 +244,8 @@ const createAxios = (opt?: Partial<CreateAxiosOptions>) => {
         transform: clone(transform),
         // 配置项，下面的选项都可以在独立的接口请求中覆盖
         requestOptions: {
+          // 默认将prefix 添加到url
+          joinPrefix: true,
           // 是否返回原生响应头 比如：需要获取响应头时使用该属性
           isReturnNativeResponse: false,
           // 需要对返回数据进行处理

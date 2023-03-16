@@ -1,7 +1,7 @@
 {
   "name": "gui-admin-monorepo",
   "private": true,
-  "version": "0.1.2",
+  "version": "1.0.5",
   "author": {
     "name": "xuhongling",
     "email": "xuhongling@live.cn",
@@ -10,10 +10,8 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "pnpm install",
-    "dev": "pnpm --filter scripts run dev",
-    "dev:all": "turbo run dev --no-cache --parallel --continue",
-    "build": "pnpm --filter scripts run build",
-    "build:all": "turbo run build",
+    "dev": "pnpm --filter scripts dev",
+    "build": "pnpm --filter scripts build",
     "clean": "turbo run clean && rimraf \"{configs,packages,projects,scripts}/**/*{node_modules,dist,.turbo}\" && rimraf node_modules",
     "format": "pnpm run lint:eslint & pnpm run lint:stylelint & pnpm run lint:prettier",
     "preinstall": "npx only-allow pnpm",
@@ -22,24 +20,30 @@
     "lint:prettier": "prettier --write  \"{packages,projects,configs,scripts}/**/*.{js,json,ts,tsx,css,less,scss,vue,html,md}\"",
     "lint:stylelint": "stylelint --fix ",
     "stub": "pnpm --filter @config/** prepack",
+    "turbo:build": "turbo run build --parallel",
+    "turbo:dev": "turbo run dev --parallel",
+    "turbo:preview": "turbo run preview --parallel",
+    "changeset": "changeset",
+    "version": "pnpm run changeset version",
     "test": "vitest"
   },
   "resolutions": {
     "bin-wrapper": "npm:bin-wrapper-china"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.0",
     "@config/lint": "workspace:*",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^17.0.45",
+    "@types/node": "^18.14.2",
     "cross-env": "^7.0.3",
     "esno": "^0.16.3",
     "fs-extra": "^10.1.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "tsconfig": "workspace:*",
-    "turbo": "^1.5.5",
-    "typescript": "^4.8.3",
-    "unbuild": "^0.8.11"
+    "turbo": "^1.8.3",
+    "typescript": "^4.9.5",
+    "unbuild": "^1.1.2"
   },
   "engines": {
     "pnpm": ">=7.0.0",

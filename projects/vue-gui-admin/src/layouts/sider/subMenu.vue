@@ -2,7 +2,7 @@
   <div class="layout-menu">
     <a-menu
       v-model:selected-keys="state.selectedKeys"
-      :open-keys="menuState.openNames"
+      :open-keys="state.openKeys"
       mode="inline"
       :collapsed="props.collapsed"
       collapsible
@@ -19,13 +19,11 @@
   import { PageEnum } from '@gui-pkg/enums';
   import MenuItem from './subMenuItem.vue';
   import { useThrottleFn } from '@vueuse/core';
-  import { getChildrenMenus, getCurrentParentPath, getMenus, getShallowMenus } from '@/router/menus';
-  import { usePermissionStoreWithOut } from '@/store/permission';
-  import { useGo } from '@gui-pkg/hooks';
+  import { getChildrenMenus, getCurrentParentPath, getMenus } from '@/router/menus';
+  import { usePermissionStoreWithOut } from '@/store/modules/permission';
+  import { useGo } from '@/hooks/web/usePage';
   import { openWindow, isUrl } from '@gui-pkg/utils';
   import { useMenuSetting } from '@/hooks/setting/useAppSetting';
-
-  import { useOpenKeys } from './useOpenKeys';
 
   const go = useGo();
   const { setMenuSetting } = useMenuSetting();
@@ -49,12 +47,6 @@
     openKeys: [] as string[],
     selectedKeys: [currentRoute.path] as string[],
     collapsedOpenKeys: [] as string[],
-  });
-
-  const menuState = reactive<MenuState>({
-    activeName: '',
-    openNames: [],
-    activeSubMenuNames: [],
   });
 
   watch(
@@ -143,15 +135,10 @@
   // 跟随页面路由变化，切换菜单选中状态
   watch(
     () => currentRoute.fullPath,
-    async () => {
+    () => {
       if (currentRoute.name === PageEnum.BASE_LOGIN || props.collapsed) return;
       state.openKeys = getOpenKeys();
       const meta = currentRoute.meta;
-      let menusData = await getMenus();
-
-      const { setOpenKeys } = useOpenKeys(menuState, menusData);
-      setOpenKeys(currentRoute.path);
-
       if (meta?.activeMenu) {
         const targetMenu = getTargetMenuByActiveMenuName(meta.activeMenu);
         state.selectedKeys = [targetMenu?.path ?? meta?.activeMenu] as string[];
@@ -178,7 +165,7 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .layout-menu {
     width: 100%;
-    height: @header-height;
+    height: var(--header-height);
     line-height: unset;
     overflow: auto;
     &::-webkit-scrollbar {
@@ -186,7 +173,7 @@
       height: 0;
     }
     .ant-menu {
-      line-height: @header-height;
+      line-height: var(--header-height);
       border-bottom: none;
       user-select: none;
     }

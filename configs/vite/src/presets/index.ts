@@ -1,8 +1,8 @@
 import { createAntdPreset } from './antd'
 
-export type FrameworkType = 'antd' | 'ele'
+export type PresetType = 'antd' | 'ele'
 
-export function createPreset(framework: FrameworkType) {
+export function createPreset(framework: PresetType) {
   const presets = {
     antd: createAntdPreset,
   }

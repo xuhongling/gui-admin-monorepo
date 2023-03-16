@@ -15,6 +15,10 @@ declare module 'vue-router' {
     hideBreadcrumb?: boolean;
     // Never show in menu
     hideMenu?: boolean;
+    //隐藏子菜单
+    hideChildrenInMenu?: boolean
+    //菜单排序
+    orderNo?: number
   }
 }
 

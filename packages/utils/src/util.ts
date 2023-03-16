@@ -66,6 +66,11 @@ const getPopupContainer = (node?: HTMLElement): HTMLElement => {
   return (node?.parentNode as HTMLElement) ?? document.body
 }
 
+const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+function isAsyncFunction(val: unknown): val is Function {
+  return val instanceof AsyncFunction;
+}
+
 export {
   isUrl,
   deepMerge,
@@ -75,4 +80,5 @@ export {
   isClient,
   isWindow,
   getPopupContainer,
+  isAsyncFunction,
 }

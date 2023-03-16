@@ -1,3 +1,3 @@
-import { run } from './helper'
+import { run } from './base';
 
-run('build')
+run('build', true);

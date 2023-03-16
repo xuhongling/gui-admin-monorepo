@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { useGo } from '@gui-pkg/hooks';
+  import { useGo } from '@/hooks/web/usePage';
   import { PageEnum } from '@gui-pkg/enums';
-  import { useUserStoreWithOut } from '@/store/user';
+  import { useUserStoreWithOut } from '@/store/modules/user';
   import { Layout } from 'ant-design-vue';
-  import { UserDropDown } from './components';
+  import UserDropDown from './user-dropdown/index.vue'
   import LayoutMenu from '../menu/index.vue';
 
   const projectName = import.meta.env.VITE_GLOB_APP_TITLE;
@@ -39,9 +39,9 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .layout-header {
     width: 100%;
-    height: @header-height;
+    height: var(--header-height);
     padding: 0 20px;
-    background: #fff;
+    background: var(--header-background);
     box-shadow: 0px 2px 10px 0px rgba(115, 115, 115, 0.2);
     display: flex;
     align-items: center;
@@ -52,18 +52,12 @@
       align-items: center;
       cursor: pointer;
       img {
-        width: 40px;
-        height: 40px;
+        width: 46px;
+        height: 46px;
       }
       h2.title {
-        font-size: 20px;
-        margin: 0px 0px 0px 8px;
-        // color: @primary-color;
-        background: linear-gradient(178.26deg, #03D2FF 18.82%, #037AFF 98.52%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
+        font-size: 18px;
+        color: var(--primary-color);
         font-weight: bold;
       }
     }

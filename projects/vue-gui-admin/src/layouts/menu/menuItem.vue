@@ -63,7 +63,5 @@
 </script>
 
 <style lang="less" rel="stylesheet/less" scoped>
-  div {
-    width: 100%;
-  }
+
 </style>
