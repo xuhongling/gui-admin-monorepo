@@ -86,10 +86,9 @@
           }
           const detailCls = 'basic-drawer__detail'
           opt.class = wrapClassName ? `${wrapClassName} ${detailCls}` : detailCls
-
           if (!getContainer) {
             // TODO type error?
-            opt.getContainer = `.gui-layout-content` as any
+            opt.getContainer = `.tabs-view-content` as any
           }
         }
         return opt as DrawerProps
@@ -184,10 +183,8 @@
 <style lang="less">
 @header-height: 60px;
 @detail-header-height: 40px;
-@prefix-cls: ~'basic-drawer';
-@prefix-cls-detail: ~'basic-drawer__detail';
 
-.@{prefix-cls} {
+.basic-drawer {
   .ant-drawer-wrapper-body {
     overflow: hidden;
   }
@@ -211,8 +208,8 @@
   }
 }
 
-.@{prefix-cls-detail} {
-  position: absolute;
+.basic-drawer__detail {
+  position: absolute !important;
 
   .ant-drawer-header {
     width: 100%;

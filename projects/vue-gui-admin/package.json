@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@gui-pkg/antdcomponents": "workspace:*",
     "@gui-pkg/components": "workspace:*",
     "@gui-pkg/enums": "workspace:*",
     "@gui-pkg/hooks": "workspace:*",
@@ -20,8 +21,9 @@
     "@gui-pkg/utils": "workspace:*",
     "@iconify/iconify": "^3.0.0",
     "@vueuse/core": "^9.3.0",
-    "ant-design-vue": "^3.2.13",
+    "ant-design-vue": "^3.2.0",
     "dayjs": "^1.11.5",
+    "exceljs": "^4.3.0",
     "gmap-ol": "^0.2.6",
     "mockjs": "^1.1.0",
     "monaco-editor": "^0.34.1",
@@ -31,9 +33,7 @@
     "pinia": "^2.0.21",
     "pinia-plugin-persistedstate": "^3.1.0",
     "vue": "3.2.47",
-    "vue-router": "^4.1.6",
-    "vxe-table": "^4.3.5",
-    "xe-utils": "^3.5.6"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@config/css-preprocess": "workspace:*",

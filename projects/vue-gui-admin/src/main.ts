@@ -1,16 +1,15 @@
-import '@gui-pkg/styles'
 // Register icon sprite
 import 'virtual:svg-icons-register';
 import App from './App.vue';
 import { createApp } from 'vue';
 import { initApplication } from './init-application';
+import { initAntdComponent } from '@gui-pkg/antdcomponents';
 import { router, setupRouter } from '@/router';
 import { setupRouterGuard } from '@/router/guard';
 import Antd from 'ant-design-vue';
 import { pinia } from '@/store';
-import VXETable from 'vxe-table';
-import 'vxe-table/lib/style.css';
 import 'ant-design-vue/dist/antd.less';
+import '@gui-pkg/styles';
 
 async function bootstrap() {
   const app = createApp(App);
@@ -31,9 +30,8 @@ async function bootstrap() {
   // 路由守卫
   setupRouterGuard(router);
 
-  // initGuiComponent(app);
   //注册自定义组件
-  app.use(VXETable)
+  initAntdComponent(app);
 
   app.mount('#app');
 

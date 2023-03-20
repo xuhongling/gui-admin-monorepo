@@ -16,6 +16,7 @@ export {
   toString,
   isObject,
   debounce,
+  upperFirst,
   assign as _assign,
   merge as _merge,
   omit as _omit,

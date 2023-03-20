@@ -315,6 +315,7 @@
     .tabs-view-content {
       height: calc(100vh - var(--header-height) - var(--tab-bar-height));
       overflow: auto;
+      position: relative;
       // padding: 16px;
     }
   }

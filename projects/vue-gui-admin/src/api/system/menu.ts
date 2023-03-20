@@ -6,9 +6,10 @@ enum Api {
 }
 
 const requestOptions = {
-  joinPrefix: false,
+  /*joinPrefix: false,
   joinParamsToUrl: false,
-  withToken: false,
+  withToken: false,*/
+  ignoreCancelToken: true,
 };
 
 

@@ -1,5 +1,6 @@
 import { isObject } from 'lodash-es'
 import { isClient, isWindow } from '@vueuse/core'
+import { isUndefined, isNull, cloneDeep} from 'lodash-es'
 
 // @ts-ignore
 function NOOP() {}
@@ -42,15 +43,14 @@ function appendUrlParams(baseUrl: string, obj: any): string {
     : baseUrl.replace(/\/?$/, '?') + parameters
 }
 
+// 深度合并
 function deepMerge<T = any>(src: any = {}, target: any = {}): T {
-  let key: string
+  let key: string;
+  const res: any = cloneDeep(src);
   for (key in target) {
-    src[key] =
-      isObject(src[key]) && src[key] !== null
-        ? deepMerge(src[key], target[key])
-        : (src[key] = target[key])
+    res[key] = isObject(res[key]) ? deepMerge(res[key], target[key]) : target[key];
   }
-  return src
+  return res;
 }
 
 function isUrl(path: string): boolean {
@@ -71,6 +71,8 @@ function isAsyncFunction(val: unknown): val is Function {
   return val instanceof AsyncFunction;
 }
 
+const isNullOrUndefined = <T = unknown>(val?: T): val is T =>  isUndefined(val) || isNull(val)
+
 export {
   isUrl,
   deepMerge,
@@ -81,4 +83,5 @@ export {
   isWindow,
   getPopupContainer,
   isAsyncFunction,
+  isNullOrUndefined,
 }

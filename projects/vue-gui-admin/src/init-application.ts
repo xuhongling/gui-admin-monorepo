@@ -66,7 +66,7 @@ export const defaultConfig: ProjectConfig = {
   // ROUTE_MAPPING: 前端模式（菜单由路由生成，默认）
   // ROLE：前端模式（菜单路由分开）
   // BACK: 后台模式，动态获取
-  permissionMode: PermissionModeEnum.BACK,
+  permissionMode: PermissionModeEnum.ROUTE_MAPPING,
   // 菜单设置，后面再完善菜单设置
   // split： 是否拆分菜单
   menuSetting: {

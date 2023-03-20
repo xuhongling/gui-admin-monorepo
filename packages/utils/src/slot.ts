@@ -4,17 +4,17 @@ import { isFunction } from '@vueuse/core'
 /**
  * @description:  Get slot to prevent empty error
  */
-export const getSlot = (slots: Slots, slot = 'default', data?: any) => {
+export function getSlot(slots: Slots, slot = 'default', data?: any) {
   if (!slots || !Reflect.has(slots, slot)) {
-    return null
+    return null;
   }
   if (!isFunction(slots[slot])) {
-    console.error(`${slot} is not a function!`)
-    return null
+    console.error(`${slot} is not a function!`);
+    return null;
   }
-  const slotFn = slots[slot]
-  if (!slotFn) return null
-  return slotFn(data)
+  const slotFn = slots[slot];
+  if (!slotFn) return null;
+  return slotFn(data);
 }
 
 /**
@@ -22,14 +22,14 @@ export const getSlot = (slots: Slots, slot = 'default', data?: any) => {
  * @param slots
  * @param excludeKeys
  */
-export const extendSlots = (slots: Slots, excludeKeys: string[] = []) => {
-  const slotKeys = Object.keys(slots)
-  const ret: any = {}
+export function extendSlots(slots: Slots, excludeKeys: string[] = []) {
+  const slotKeys = Object.keys(slots);
+  const ret: any = {};
   slotKeys.map((key) => {
     if (excludeKeys.includes(key)) {
-      return null
+      return null;
     }
-    ret[key] = () => getSlot(slots, key)
-  })
-  return ret
+    ret[key] = (data?: any) => getSlot(slots, key, data);
+  });
+  return ret;
 }

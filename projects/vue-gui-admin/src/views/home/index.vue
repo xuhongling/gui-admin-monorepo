@@ -7,7 +7,7 @@
 <script lang="ts" setup>
   import { onMounted } from 'vue';
   import { getMenuList } from '@/api/system/menu';
-  import { GlobalMap, getGlobalMap } from '@/components/GlobalMap';
+  import { GlobalMap, getGlobalMap } from '@/components/global-map';
   import { addLineStringLayer } from 'gmap-ol';
 
   const addMapData = () => {
