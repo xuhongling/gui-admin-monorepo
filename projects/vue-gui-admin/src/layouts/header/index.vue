@@ -2,7 +2,7 @@
   <Layout.Header class="layout-header">
     <div class="layout-header-logo" @click="goHome">
       <img src="../../assets/logo.png" alt="" />
-      <h2 class="ml-2 truncate md:opacity-100 title">{{ projectName }}</h2>
+      <h2 class="truncate md:opacity-100 title">{{ projectName }}</h2>
     </div>
     <div class="layout-header-menu">
       <LayoutMenu :collapsed="props.collapsed" />
@@ -52,8 +52,7 @@
       align-items: center;
       cursor: pointer;
       img {
-        width: 46px;
-        height: 46px;
+        width: 44px;
       }
       h2.title {
         font-size: 18px;
