@@ -2,7 +2,7 @@
   <div class="layout-menu">
     <a-menu
       v-model:selected-keys="state.selectedKeys"
-      :open-keys="state.openKeys"
+      :open-keys="menuState.openNames"
       mode="inline"
       :collapsed="props.collapsed"
       collapsible
@@ -24,6 +24,8 @@
   import { useGo } from '@/hooks/web/usePage';
   import { openWindow, isUrl } from '@gui-pkg/utils';
   import { useMenuSetting } from '@/hooks/setting/useAppSetting';
+
+  import { useOpenKeys } from './useOpenKeys';
 
   const go = useGo();
   const { setMenuSetting } = useMenuSetting();
@@ -47,6 +49,12 @@
     openKeys: [] as string[],
     selectedKeys: [currentRoute.path] as string[],
     collapsedOpenKeys: [] as string[],
+  });
+
+  const menuState = reactive<MenuState>({
+    activeName: '',
+    openNames: [],
+    activeSubMenuNames: [],
   });
 
   watch(
@@ -135,10 +143,17 @@
   // 跟随页面路由变化，切换菜单选中状态
   watch(
     () => currentRoute.fullPath,
-    () => {
+    async () => {
       if (currentRoute.name === PageEnum.BASE_LOGIN || props.collapsed) return;
       state.openKeys = getOpenKeys();
       const meta = currentRoute.meta;
+      let menusData = await getMenus();
+
+      const { setOpenKeys } = useOpenKeys(menuState, menusData);
+      setOpenKeys(currentRoute.path);
+
+      console.log(menuState);
+
       if (meta?.activeMenu) {
         const targetMenu = getTargetMenuByActiveMenuName(meta.activeMenu);
         state.selectedKeys = [targetMenu?.path ?? meta?.activeMenu] as string[];
