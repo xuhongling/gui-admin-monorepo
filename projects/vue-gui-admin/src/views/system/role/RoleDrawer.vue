@@ -9,12 +9,20 @@
   >
     <BasicForm @register="registerForm">
       <template #menu="{ model, field }">
-        <h3 class="menuTitle">菜单分配</h3>
+        <!-- <h3 class="menuTitle">菜单分配</h3>
         <a-tree
           v-model:value="model[field]"
           :tree-data="treeData"
           :fieldNames="{ title: 'menuName', key: 'id' }"
           checkable
+        /> -->
+        <BasicTree
+          v-model:value="model[field]"
+          :treeData="treeData"
+          :fieldNames="{ title: 'menuName', key: 'id' }"
+          checkable
+          toolbar
+          title="菜单分配"
         />
       </template>
     </BasicForm>
@@ -23,7 +31,7 @@
 
 <script lang="ts" setup>
   import { ref, computed, unref } from 'vue';
-  import { BasicDrawer, useDrawerInner, BasicForm, useForm } from '@gui-pkg/antdcomponents';
+  import { BasicDrawer, useDrawerInner, BasicForm, useForm, BasicTree } from '@gui-pkg/antdcomponents';
   import { formSchema } from './role.data';
   import { getMenuList } from '@/api/demo/system';
 

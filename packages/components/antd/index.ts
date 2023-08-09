@@ -7,6 +7,7 @@ export { Button, PopConfirmButton } from './src/button/index'
 export { BasicDrawer, useDrawer, useDrawerInner } from './src/drawer/index'
 export { BasicModal, useModalContext, useModal, useModalInner } from './src/modal/index'
 export { PageWrapper } from './src/page/index'
+export { BasicTree } from './src/tree/index'
 export { BasicForm, useComponentRegister, useForm, ApiSelect, RadioButtonGroup, ApiTreeSelect, ApiRadioGroup, ApiCascader } from './src/form/index'
 export { VxeBasicTable } from './src/vxe-table/index'
 

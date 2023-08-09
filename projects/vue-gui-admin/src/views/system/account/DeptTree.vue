@@ -3,7 +3,7 @@
     <div class="tree-header flex px-2 py-1.5 items-center">
       <div class="basic-title">部门列表</div>
     </div>
-    <div class="scrollbar scroll-container" style="height: 80%;">
+    <div class="scrollbar scroll-container p-2.5" style="height: 80%;">
       <a-tree
         :tree-data="treeData"
         :fieldNames="{children:'children', title:'deptName', key:'id' }"

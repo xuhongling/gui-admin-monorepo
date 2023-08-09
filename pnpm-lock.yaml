@@ -423,8 +423,8 @@ importers:
         specifier: ^4.3.0
         version: registry.npmmirror.com/exceljs@4.3.0
       gmap-ol:
-        specifier: ^0.4.1
-        version: registry.npmmirror.com/gmap-ol@0.4.1(ol@6.15.0)
+        specifier: ^0.4.2
+        version: registry.npmmirror.com/gmap-ol@0.4.2(ol@6.15.0)
       mockjs:
         specifier: ^1.1.0
         version: registry.npmmirror.com/mockjs@1.1.0
@@ -7859,11 +7859,11 @@ packages:
     version: 0.1.4
     dev: false
 
-  registry.npmmirror.com/gmap-ol@0.4.1(ol@6.15.0):
-    resolution: {integrity: sha512-PLZUD4504iX/qNKIpBXDw7whg2ZbHGLiK82ycgbQldyMP0Ocv/7LYzyAVajeNl10qdEZFHbYHkKNf+aSwtsDaA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/gmap-ol/-/gmap-ol-0.4.1.tgz}
-    id: registry.npmmirror.com/gmap-ol/0.4.1
+  registry.npmmirror.com/gmap-ol@0.4.2(ol@6.15.0):
+    resolution: {integrity: sha512-velPWx9/0c+2lD/Y3HjsjPMhLUVAjI515RJij1s3cytPS7VqakdpfknDwPbyZnwsI/s/U1IwuNHaaFHozfWJyg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/gmap-ol/-/gmap-ol-0.4.2.tgz}
+    id: registry.npmmirror.com/gmap-ol/0.4.2
     name: gmap-ol
-    version: 0.4.1
+    version: 0.4.2
     peerDependencies:
       ol: '>=6.5'
     dependencies:

@@ -12,6 +12,8 @@ export {
   omit,
   set,
   get,
+  fromPairs,
+  difference,
   assign as _assign,
   merge as _merge,
   omit as _omit,

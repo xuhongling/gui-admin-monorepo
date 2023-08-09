@@ -47,7 +47,8 @@ function buildBEM(name: string) {
 }
 
 export function createBEM(name: string) {
-  return { bem: buildBEM(`${name}`) }
+  // return { bem: buildBEM(`${name}`) }
+  return [buildBEM(`${name}`)];
 }
 
 export function createNamespace(name: string) {
