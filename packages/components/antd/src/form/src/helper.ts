@@ -1,5 +1,5 @@
-import type { ValidationRule } from 'ant-design-vue/lib/form/Form'
-import type { ComponentType } from './types/index'
+import type { ValidationRule } from 'ant-design-vue/lib/form/Form';
+import type { ComponentType } from './types/index';
 import { dateUtil, isNumber, isObject } from '@gui-pkg/utils'
 
 /**
@@ -36,52 +36,48 @@ export function setComponentRuleType(
   component: ComponentType,
   valueFormat: string,
 ) {
-  if (
-    ['DatePicker', 'MonthPicker', 'WeekPicker', 'TimePicker'].includes(
-      component,
-    )
-  ) {
-    rule.type = valueFormat ? 'string' : 'object'
-  } else if (
-    ['RangePicker', 'Upload', 'CheckboxGroup', 'TimePicker'].includes(component)
-  ) {
-    rule.type = 'array'
+  if (['DatePicker', 'MonthPicker', 'WeekPicker', 'TimePicker'].includes(component)) {
+    rule.type = valueFormat ? 'string' : 'object';
+  } else if (['RangePicker', 'Upload', 'CheckboxGroup', 'TimePicker'].includes(component)) {
+    rule.type = 'array';
   } else if (['InputNumber'].includes(component)) {
-    rule.type = 'number'
+    rule.type = 'number';
   }
 }
 
 export function processDateValue(attr: Recordable, component: string) {
-  const { valueFormat, value } = attr
+  const { valueFormat, value } = attr;
   if (valueFormat) {
-    attr.value = isObject(value)
-      ? dateUtil(value as unknown as Date).format(valueFormat)
-      : value
+    attr.value = isObject(value) ? dateUtil(value).format(valueFormat) : value;
   } else if (DATE_TYPE.includes(component) && value) {
-    attr.value = dateUtil(attr.value)
+    attr.value = dateUtil(attr.value);
   }
 }
 
 export function handleInputNumberValue(component?: ComponentType, val?: any) {
-  if (!component) return val
-  if (
-    ['Input', 'InputPassword', 'InputSearch', 'InputTextArea'].includes(
-      component,
-    )
-  ) {
-    return val && isNumber(val) ? `${val}` : val
+  if (!component) return val;
+  if (['Input', 'InputPassword', 'InputSearch', 'InputTextArea'].includes(component)) {
+    return val && isNumber(val) ? `${val}` : val;
   }
-  return val
+  return val;
 }
 
 /**
  * 时间字段
  */
-export const dateItemType = genType()
+export const dateItemType = genType();
 
-export const defaultValueComponents = [
-  'Input',
-  'InputPassword',
-  'InputSearch',
-  'InputTextArea',
-]
+export const defaultValueComponents = ['Input', 'InputPassword', 'InputSearch', 'InputTextArea'];
+
+// TODO 自定义组件封装会出现验证问题，因此这里目前改成手动触发验证
+export const NO_AUTO_LINK_COMPONENTS: ComponentType[] = [
+  'Upload',
+  'ApiTransfer',
+  'ApiTree',
+  'ApiSelect',
+  'ApiTreeSelect',
+  'ApiRadioGroup',
+  'ApiCascader',
+  'AutoComplete',
+  'RadioButtonGroup',
+];

@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref, unref, watch, watchEffect } from 'vue'
 import { Cascader } from 'ant-design-vue'
-import { isFunction, get, omit } from '@gui-pkg/utils'
+import { isFunction, get, omit, propTypes } from '@gui-pkg/utils'
 import { useRuleFormItem } from '../hooks/useFormItem.ts'
 import { LoadingOutlined } from '@ant-design/icons-vue'
 
@@ -43,24 +43,24 @@ export default defineComponent({
       type: Array,
     },
     api: {
-      type: Function as PropType<(arg?: Recordable) => Promise<Option[]>>,
+      type: Function as PropType<(arg?: Recordable<any>) => Promise<Option[]>>,
       default: null,
     },
-    numberToString: { type: Boolean },
-    resultField: { type: String, default: '' },
-    labelField: { type: String, default: 'label' },
-    valueField: { type: String, default: 'value' },
-    childrenField: { type: String, default: 'children' },
-    asyncFetchParamKey: { type: String, default: 'parentCode' },
-    immediate: { type: Boolean, default: true },
+    numberToString: propTypes.bool,
+    resultField: propTypes.string.def(''),
+    labelField: propTypes.string.def('label'),
+    valueField: propTypes.string.def('value'),
+    childrenField: propTypes.string.def('children'),
+    asyncFetchParamKey: propTypes.string.def('parentCode'),
+    immediate: propTypes.bool.def(true),
     // init fetch params
     initFetchParams: {
-      type: Object as PropType<Recordable>,
+      type: Object as PropType<Recordable<any>>,
       default: () => ({}),
     },
     // 是否有下级，默认是
     isLeaf: {
-      type: Function as PropType<(arg: Recordable) => boolean>,
+      type: Function as PropType<(arg: Recordable<any>) => boolean>,
       default: null,
     },
     displayRenderArray: {
@@ -69,11 +69,11 @@ export default defineComponent({
   },
   emits: ['change', 'defaultChange'],
   setup(props, { emit }) {
-    const apiData = ref<any[]>([])
-    const options = ref<Option[]>([])
-    const loading = ref<boolean>(false)
-    const emitData = ref<any[]>([])
-    const isFirstLoad = ref(true)
+    const apiData = ref<any[]>([]);
+    const options = ref<Option[]>([]);
+    const loading = ref<boolean>(false);
+    const emitData = ref<any[]>([]);
+    const isFirstLoad = ref(true);
 
     // Embedded in the form, just use the hook binding to perform form verification
     const [state] = useRuleFormItem(props, 'value', 'change', emitData)

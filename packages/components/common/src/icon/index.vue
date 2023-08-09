@@ -80,6 +80,7 @@
 <style lang="less" scoped>
   .iconify {
     display: inline-block;
+    background: transparent;
   }
   .iconify__infinite {
     animation: loadingCircle 1s infinite linear;

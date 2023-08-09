@@ -1,6 +1,4 @@
-import { isObject } from 'lodash-es'
-import { isClient, isWindow } from '@vueuse/core'
-import { isUndefined, isNull, cloneDeep} from 'lodash-es'
+import { isObject, cloneDeep } from 'lodash-es';
 
 // @ts-ignore
 function NOOP() {}
@@ -53,12 +51,6 @@ function deepMerge<T = any>(src: any = {}, target: any = {}): T {
   return res;
 }
 
-function isUrl(path: string): boolean {
-  const reg =
-    /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/
-  return reg.test(path)
-}
-
 /**
  * @description:  Set ui mount node
  */
@@ -66,22 +58,10 @@ const getPopupContainer = (node?: HTMLElement): HTMLElement => {
   return (node?.parentNode as HTMLElement) ?? document.body
 }
 
-const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
-function isAsyncFunction(val: unknown): val is Function {
-  return val instanceof AsyncFunction;
-}
-
-const isNullOrUndefined = <T = unknown>(val?: T): val is T =>  isUndefined(val) || isNull(val)
-
 export {
-  isUrl,
   deepMerge,
   appendUrlParams,
   openWindow,
   NOOP,
-  isClient,
-  isWindow,
-  getPopupContainer,
-  isAsyncFunction,
-  isNullOrUndefined,
+  getPopupContainer
 }

@@ -13,13 +13,13 @@
     "@gui-pkg/utils": "workspace:*",
     "@gui-pkg/hooks": "workspace:*",
     "@gui-pkg/components": "workspace:*",
-    "ant-design-vue": "^3.2.0",
+    "ant-design-vue": "^3.2.20",
     "exceljs": "^4.3.0",
     "sass": "^1.55.0",
-    "vue": "3.2.47",
-    "vxe-table": "^4.3.9",
-    "vxe-table-plugin-export-xlsx": "^3.0.4",
-    "xe-utils": "^3.5.7"
+    "vue": "3.3.4",
+    "vxe-table": "^4.4.7",
+    "vxe-table-plugin-export-xlsx": "^3.0.5",
+    "xe-utils": "^3.5.11"
   },
   "devDependencies": {
     "@gui-pkg/types": "workspace:*"

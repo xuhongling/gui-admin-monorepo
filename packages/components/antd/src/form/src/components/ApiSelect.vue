@@ -21,17 +21,9 @@
   </Select>
 </template>
 <script lang="ts">
-import {
-  defineComponent,
-  PropType,
-  ref,
-  watchEffect,
-  computed,
-  unref,
-  watch,
-} from 'vue'
+import { defineComponent, PropType, ref, watchEffect, computed, unref, watch } from 'vue'
 import { Select } from 'ant-design-vue'
-import { isFunction, get, omit } from '@gui-pkg/utils'
+import { isFunction, get, omit, propTypes } from '@gui-pkg/utils'
 import { useRuleFormItem } from '../hooks/useFormItem.ts'
 import { LoadingOutlined } from '@ant-design/icons-vue'
 import { useAttrs } from '@gui-pkg/hooks'
@@ -44,112 +36,111 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     value: [Array, Object, String, Number],
-    numberToString: { type: Boolean },
+    numberToString: propTypes.bool,
     api: {
-      type: Function as PropType<(arg?: Recordable) => Promise<OptionsItem[]>>,
+      type: Function as PropType<(arg?: any) => Promise<OptionsItem[]>>,
       default: null,
     },
     // api params
-    params: {
-      type: Object as PropType<Recordable>,
-      default: () => ({}),
-    },
+    params: propTypes.any.def({}),
     // support xxx.xxx.xx
-    resultField: { type: String, default: '' },
-    labelField: { type: String, default: 'label' },
-    valueField: { type: String, default: 'value' },
-    immediate: { type: Boolean, default: true },
-    alwaysLoad: { type: Boolean, default: false },
+    resultField: propTypes.string.def(''),
+    labelField: propTypes.string.def('label'),
+    valueField: propTypes.string.def('value'),
+    immediate: propTypes.bool.def(true),
+    alwaysLoad: propTypes.bool.def(false),
+    options: propTypes.array.def([]),
   },
-  emits: ['options-change', 'change'],
+  emits: ['options-change', 'change', 'update:value'],
   setup(props, { emit }) {
-    const options = ref<OptionsItem[]>([])
-    const loading = ref(false)
-    const isFirstLoad = ref(true)
-    const emitData = ref<any[]>([])
-    const attrs = useAttrs()
+      const options = ref<OptionsItem[]>([]);
+      const loading = ref(false);
+      const isFirstLoad = ref(true);
+      const emitData = ref<any[]>([]);
+      const attrs = useAttrs();
 
-    // Embedded in the form, just use the hook binding to perform form verification
-    const [state] = useRuleFormItem(props, 'value', 'change', emitData)
+      // Embedded in the form, just use the hook binding to perform form verification
+      const [state] = useRuleFormItem(props, 'value', 'change', emitData);
 
-    const getOptions = computed(() => {
-      const { labelField, valueField, numberToString } = props
+      const getOptions = computed(() => {
+        const { labelField, valueField, numberToString } = props;
 
-      return unref(options).reduce((prev, next: Recordable) => {
-        if (next) {
-          const value = next[valueField]
-          prev.push({
-            ...omit(next, [labelField, valueField]),
-            label: next[labelField],
-            value: numberToString ? `${value}` : value,
-          })
-        }
-        return prev
-      }, [] as OptionsItem[])
-    })
+        let data = unref(options).reduce((prev, next: any) => {
+          if (next) {
+            const value = get(next, valueField);
+            prev.push({
+              ...omit(next, [labelField, valueField]),
+              label: get(next, labelField),
+              value: numberToString ? `${value}` : value,
+            });
+          }
+          return prev;
+        }, [] as OptionsItem[]);
+        return data.length > 0 ? data : props.options;
+      });
 
-    watchEffect(() => {
-      props.immediate && !props.alwaysLoad && fetch()
-    })
+      watchEffect(() => {
+        props.immediate && !props.alwaysLoad && fetch();
+      });
 
-    watch(
-      () => props.params,
-      () => {
-        !unref(isFirstLoad) && fetch()
-      },
-      { deep: true },
-    )
+      watch(
+        () => state.value,
+        (v) => {
+          emit('update:value', v);
+        },
+      );
 
-    async function fetch() {
-      const api = props.api
-      if (!api || !isFunction(api)) return
-      options.value = []
-      try {
-        loading.value = true
-        const res = await api(props.params)
-        if (Array.isArray(res)) {
-          options.value = res
-          emitChange()
-          return
-        }
-        if (props.resultField) {
-          options.value = get(res, props.resultField) || []
-        }
-        emitChange()
-      } catch (error) {
-        console.warn(error)
-      } finally {
-        loading.value = false
-      }
-    }
+      watch(
+        () => props.params,
+        () => {
+          !unref(isFirstLoad) && fetch();
+        },
+        { deep: true },
+      );
 
-    async function handleFetch(visible) {
-      if (visible) {
-        if (props.alwaysLoad) {
-          await fetch()
-        } else if (!props.immediate && unref(isFirstLoad)) {
-          await fetch()
-          isFirstLoad.value = false
+      async function fetch() {
+        const api = props.api;
+        if (!api || !isFunction(api)) return;
+        options.value = [];
+        try {
+          loading.value = true;
+          const res = await api(props.params);
+          if (Array.isArray(res)) {
+            options.value = res;
+            emitChange();
+            return;
+          }
+          if (props.resultField) {
+            options.value = get(res, props.resultField) || [];
+          }
+          emitChange();
+        } catch (error) {
+          console.warn(error);
+        } finally {
+          loading.value = false;
         }
       }
-    }
 
-    function emitChange() {
-      emit('options-change', unref(getOptions))
-    }
+      async function handleFetch(visible) {
+        if (visible) {
+          if (props.alwaysLoad) {
+            await fetch();
+          } else if (!props.immediate && unref(isFirstLoad)) {
+            await fetch();
+            isFirstLoad.value = false;
+          }
+        }
+      }
 
-    function handleChange(_, ...args) {
-      emitData.value = args
-    }
+      function emitChange() {
+        emit('options-change', unref(getOptions));
+      }
 
-    return {
-      state,
-      attrs,
-      getOptions,
-      loading,
-      handleFetch,
-      handleChange,
-    }
-  },
+      function handleChange(_, ...args) {
+        emitData.value = args;
+      }
+
+      return { state, attrs, getOptions, loading, handleFetch, handleChange };
+    },
 })
 </script>

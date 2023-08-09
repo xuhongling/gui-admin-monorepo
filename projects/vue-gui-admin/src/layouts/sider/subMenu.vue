@@ -152,8 +152,6 @@
       const { setOpenKeys } = useOpenKeys(menuState, menusData);
       setOpenKeys(currentRoute.path);
 
-      console.log(menuState);
-
       if (meta?.activeMenu) {
         const targetMenu = getTargetMenuByActiveMenuName(meta.activeMenu);
         state.selectedKeys = [targetMenu?.path ?? meta?.activeMenu] as string[];
@@ -183,6 +181,7 @@
     height: var(--header-height);
     line-height: unset;
     overflow: auto;
+    user-select: none;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;

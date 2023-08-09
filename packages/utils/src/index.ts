@@ -14,4 +14,5 @@ export * from './propTypes'
 export * from './with-install'
 export * from './slot'
 export * from './base64'
+export * from './is'
 

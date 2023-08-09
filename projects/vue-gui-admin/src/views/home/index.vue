@@ -8,43 +8,30 @@
   import { onMounted } from 'vue';
   import { getMenuList } from '@/api/system/menu';
   import { GlobalMap, getGlobalMap } from '@/components/global-map';
-  import { addLineStringLayer } from 'gmap-ol';
+  import { addWmsLayer, getWmsFeature } from 'gmap-ol';
 
-  const addMapData = () => {
-    const olMap = getGlobalMap();
-    // LineString 的 GeoJSON 数据
-    const lineStringData = {
-      "type": "FeatureCollection",
-      "features": [{
-        "type": "Feature",
-        "geometry": {
-          "type": "LineString",
-          "coordinates": [
-            [114.411, 30.407],
-            [114.409, 30.708]
-          ]
-        },
-        "properties": {
-          "name": "武汉"
-        }
-      }]
+  const addMapData = async () => {
+    const olMap = await getGlobalMap();
+    const wmsOptions = {
+      url: 'http://139.224.204.129:8086/geoserver/ChangZhouYS',
+      layerName: 'WMS_Layer',
+      layers: 'ChangZhouYS:a_river',
+      filter: [`grade=2`],
     };
 
-    // lineString 的 Options
-    const lineStringOptions = {
-      layerName: 'LineStringLayer',
-      zIndex: 10,
-      textFieldName: 'name',
-      styles: {
-        stroke: {
-          width: 3,
-          color: 'rgba(255, 10, 10, 1)',
-        },
-      },
+    addWmsLayer(olMap, wmsOptions);
+
+    const wmsFeatureOptions = {
+      layerName: 'WMS_Layer',
+      layers: 'ChangZhouYS:a_river',
     };
 
-    // 把数据加载在地图上
-    addLineStringLayer(olMap, lineStringData, lineStringOptions);
+    // 回调函数，获取点击 WMS 瓦片图层的数据
+    const getFeatureCallbackFn = (data) => {
+      console.log(data, 'WMS瓦片图层数据');
+    };
+
+    getWmsFeature(olMap, wmsFeatureOptions, getFeatureCallbackFn);
   }
 
   onMounted(async () => {

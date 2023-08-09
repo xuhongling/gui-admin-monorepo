@@ -1,8 +1,12 @@
 import type { Ref } from 'vue';
 
 import { ref, onMounted, watch, onUnmounted } from 'vue';
-import { isWindow, isObject } from '@gui-pkg/utils';
+import { isObject } from '@gui-pkg/utils';
 import { useThrottleFn } from '@vueuse/core';
+
+const isWindow = (value: any): value is Window => {
+  return typeof window !== 'undefined' && value != null && value === value.window;
+}
 
 export function useScroll(
   refEl: Ref<Element | Window | null>,

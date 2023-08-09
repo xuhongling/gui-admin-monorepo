@@ -128,6 +128,7 @@
     height: var(--header-height);
     line-height: unset;
     overflow: auto;
+    user-select: none;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;

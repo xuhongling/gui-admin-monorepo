@@ -1,40 +1,41 @@
-import { tryOnUnmounted, tryOnMounted } from '@vueuse/core'
-import { useDebounceFn } from '@vueuse/core'
+import { type AnyFunction } from '@gui-pkg/types';
+import { tryOnMounted, tryOnUnmounted, useDebounceFn } from '@vueuse/core';
 
-interface WindowSizeOptions {
-  once?: boolean
-  immediate?: boolean
-  listenerOptions?: AddEventListenerOptions | boolean
+interface UseWindowSizeOptions {
+  wait?: number;
+  once?: boolean;
+  immediate?: boolean;
+  listenerOptions?: AddEventListenerOptions | boolean;
 }
 
-export const useWindowResize = <T>(
-  fn: AnyFunction<T>,
-  wait = 150,
-  options?: WindowSizeOptions,
-) => {
+function useWindowResize(fn: AnyFunction, options: UseWindowSizeOptions = {}) {
+  const { wait = 150, immediate } = options;
   let handler = () => {
-    fn()
-  }
-  const handleSize = useDebounceFn(handler, wait)
-  handler = handleSize
+    fn();
+  };
+  const handleSize = useDebounceFn(handler, wait);
+  handler = handleSize;
 
   const start = () => {
-    if (options && options.immediate) {
-      handler()
+    if (immediate) {
+      handler();
     }
-    window.addEventListener('resize', handler)
-  }
+    window.addEventListener('resize', handler);
+  };
 
   const stop = () => {
-    window.removeEventListener('resize', handler)
-  }
+    window.removeEventListener('resize', handler);
+  };
 
   tryOnMounted(() => {
-    start()
-  })
+    start();
+  });
 
   tryOnUnmounted(() => {
-    stop()
-  })
-  return [start, stop]
+    stop();
+  });
+  return { start, stop };
 }
+
+export { useWindowResize, type UseWindowSizeOptions };
+

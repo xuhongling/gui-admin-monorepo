@@ -1,26 +1,24 @@
-export * from './src'
-export * from '@vueuse/core'
 export {
   isEqual,
-  isEmpty,
   isNil,
-  isNull,
-  omit,
   cloneDeep,
   uniqBy,
   isUndefined,
   clone,
   mergeWith,
-  isArray,
-  isString,
   toString,
-  isObject,
   debounce,
   upperFirst,
+  omit,
+  set,
+  get,
   assign as _assign,
   merge as _merge,
   omit as _omit,
-} from 'lodash-es'
+} from 'lodash-es';
+
+export * from '@vueuse/core';
+export * from './src';
 
 // @ts-ignore
 import Sortable from 'sortablejs'

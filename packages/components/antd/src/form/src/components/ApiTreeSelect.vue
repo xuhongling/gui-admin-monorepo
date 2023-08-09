@@ -12,19 +12,17 @@
 <script lang="ts">
 import { computed, defineComponent, watch, ref, onMounted, unref } from 'vue'
 import { TreeSelect } from 'ant-design-vue'
-import { isArray, isFunction, get } from '@gui-pkg/utils'
+import { isArray, isFunction, get, propTypes } from '@gui-pkg/utils'
 import { LoadingOutlined } from '@ant-design/icons-vue'
 
 export default defineComponent({
   name: 'ApiTreeSelect',
   components: { ATreeSelect: TreeSelect, LoadingOutlined },
   props: {
-    api: {
-      type: Function as PropType<(arg?: Recordable) => Promise<Recordable>>,
-    },
+    api: { type: Function as PropType<(arg?: Recordable<any>) => Promise<Recordable<any>>> },
     params: { type: Object },
     immediate: { type: Boolean, default: true },
-    resultField: { type: String },
+    resultField: propTypes.string.def(''),
   },
   emits: ['options-change', 'change'],
   setup(props, { attrs, emit }) {

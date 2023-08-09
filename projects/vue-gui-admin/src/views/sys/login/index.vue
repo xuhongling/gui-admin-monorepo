@@ -32,7 +32,8 @@
       top: 14px;
       left: 40px;
       .logo_icon {
-        width: 50px;
+        width: 40px;
+        margin-right: 10px;
       }
       .logo_name {
         font-size: 26px;

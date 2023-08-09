@@ -1,9 +1,6 @@
 <template>
   <a-col v-bind="actionColOpt" v-if="showActionButtonGroup">
-    <div
-      style="width: 100%"
-      :style="{ textAlign: actionColOpt.style.textAlign }"
-    >
+    <div style="width: 100%" :style="{ textAlign: actionColOpt.style.textAlign }">
       <FormItem>
         <slot name="resetBefore"></slot>
         <Button
@@ -34,11 +31,7 @@
           @click="toggleAdvanced"
           v-if="showAdvancedButton && !hideAdvanceBtn"
         >
-          {{
-            isAdvanced
-              ? '收起'
-              : '展开'
-          }}
+          {{ isAdvanced ? '收起' : '展开' }}
           <BasicArrow class="ml-1" :expand="!isAdvanced" up />
         </Button>
         <slot name="advanceAfter"></slot>
@@ -54,6 +47,7 @@ import { defineComponent, computed } from 'vue'
 import { Form, Col, Button } from 'ant-design-vue'
 import { BasicArrow } from '../../../basic'
 import { useFormContext } from '../hooks/useFormContext'
+import { propTypes } from '@gui-pkg/utils'
 
 type ButtonOptions = Partial<ButtonProps> & { text: string }
 
@@ -61,10 +55,10 @@ export default defineComponent({
   name: 'BasicFormAction',
   components: { FormItem: Form.Item, Button, BasicArrow, [Col.name]: Col },
   props: {
-    showActionButtonGroup: { type: Boolean, default: true },
-    showResetButton: { type: Boolean, default: true },
-    showSubmitButton: { type: Boolean, default: true },
-    showAdvancedButton: { type: Boolean, default: true },
+    showActionButtonGroup: propTypes.bool.def(true),
+    showResetButton: propTypes.bool.def(true),
+    showSubmitButton: propTypes.bool.def(true),
+    showAdvancedButton: propTypes.bool.def(true),
     resetButtonOptions: {
       type: Object as PropType<ButtonOptions>,
       default: () => ({}),
@@ -77,9 +71,9 @@ export default defineComponent({
       type: Object as PropType<Partial<ColEx>>,
       default: () => ({}),
     },
-    actionSpan: { type: Number, default: 6 },
-    isAdvanced: { type: Boolean },
-    hideAdvanceBtn: { type: Boolean },
+    actionSpan: propTypes.number.def(6),
+    isAdvanced: propTypes.bool,
+    hideAdvanceBtn: propTypes.bool,
   },
   emits: ['toggle-advanced'],
   setup(props, { emit }) {

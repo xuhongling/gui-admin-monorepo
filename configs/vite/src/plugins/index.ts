@@ -3,7 +3,6 @@ import type { ViteEnv } from '../utils'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
-import defineOptions from 'unplugin-vue-define-options/vite'
 import { configHtmlPlugin } from './html'
 import { configMockPlugin } from './mock'
 import { configCompressPlugin } from './compress'
@@ -29,8 +28,6 @@ export async function configVitePlugins(root: string, viteEnv: ViteEnv, isBuild:
   vitePlugins.push(await configHtmlPlugin(root, viteEnv, isBuild))
 
   vitePlugins.push(createConfigPlugin())
-
-  vitePlugins.push(defineOptions())
 
   // vite-plugin-svg-icons
   vitePlugins.push(configSvgIconsPlugin(isBuild))

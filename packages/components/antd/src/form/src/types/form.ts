@@ -24,27 +24,23 @@ export interface ButtonProps extends AntdButtonProps {
 }
 
 export interface FormActionType {
-  submit: () => Promise<void>
-  setFieldsValue: <T>(values: T) => Promise<void>
-  resetFields: () => Promise<void>
-  getFieldsValue: () => Recordable
-  clearValidate: (name?: string | string[]) => Promise<void>
-  updateSchema: (
-    data: Partial<FormSchema> | Partial<FormSchema>[],
-  ) => Promise<void>
-  resetSchema: (
-    data: Partial<FormSchema> | Partial<FormSchema>[],
-  ) => Promise<void>
-  setProps: (formProps: Partial<FormProps>) => Promise<void>
-  removeSchemaByFiled: (field: string | string[]) => Promise<void>
+  submit: () => Promise<void>;
+  setFieldsValue: (values: Recordable) => Promise<void>;
+  resetFields: () => Promise<void>;
+  getFieldsValue: () => Recordable;
+  clearValidate: (name?: string | string[]) => Promise<void>;
+  updateSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>;
+  resetSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>;
+  setProps: (formProps: Partial<FormProps>) => Promise<void>;
+  removeSchemaByField: (field: string | string[]) => Promise<void>;
   appendSchemaByField: (
-    schema: FormSchema,
+    schema: FormSchema | FormSchema[],
     prefixField: string | undefined,
     first?: boolean | undefined,
-  ) => Promise<void>
-  validateFields: (nameList?: NamePath[]) => Promise<any>
-  validate: (nameList?: NamePath[]) => Promise<any>
-  scrollToField: (name: NamePath, options?: ScrollOptions) => Promise<void>
+  ) => Promise<void>;
+  validateFields: (nameList?: NamePath[]) => Promise<any>;
+  validate: (nameList?: NamePath[] | false) => Promise<any>;
+  scrollToField: (name: NamePath, options?: ScrollOptions) => Promise<void>;
 }
 
 export type RegisterFn = (formInstance: FormActionType) => void
@@ -52,6 +48,7 @@ export type RegisterFn = (formInstance: FormActionType) => void
 export type UseFormReturnType = [RegisterFn, FormActionType]
 
 export interface FormProps {
+  name?: string;
   layout?: 'vertical' | 'inline' | 'horizontal'
   // Form value
   model?: Recordable
@@ -129,6 +126,8 @@ export interface FormProps {
 export interface FormSchema {
   // Field name
   field: string
+  // Extra Fields name[]
+  fields?: string[];
   // Event name triggered by internal value change, default change
   changeEvent?: string
   // Variable name bound to v-model Default value

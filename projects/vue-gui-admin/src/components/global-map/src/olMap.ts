@@ -21,31 +21,21 @@ export function initBasicMap(target) {
     return;
   }
 
-  // 街道图
+  // 影像图
   const tileLayer = new TileLayer({
     source: new XYZ({
-      url: `http://t${Math.round(
-        Math.random() * 7
-      )}.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=950abfef61150445b6c3c1d79b5f85fb`,
-    }),
-    visible: true,
-  });
-  // 街道图 路网标注
-  const roadNet = new TileLayer({
-    source: new XYZ({
-      url: `http://t${Math.round(
-        Math.random() * 7
-      )}.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk=950abfef61150445b6c3c1d79b5f85fb`,
+      crossOrigin: 'anonymous',
+      url: 'https://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineCommunity/MapServer/tile/{z}/{y}/{x}',
     }),
     visible: true,
   });
 
   const olMap: any = new Map({
     target: wrapEl,
-    layers: [tileLayer, roadNet],
+    layers: [tileLayer],
     view: new View({
       center: [114.411, 30.507],
-      zoom: 11,
+      zoom: 8,
       minZoom: 5,
       maxZoom: 18,
       projection: 'EPSG:4326',

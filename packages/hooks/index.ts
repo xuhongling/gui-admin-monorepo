@@ -1,5 +1,6 @@
 export * from './src/useECharts/index'
 export * from './src/useAttrs'
+export * from './src/useContentHeight'
 export * from './src/useBreakpoint'
 export * from './src/useContext'
 export * from './src/useEventListener'

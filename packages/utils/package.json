@@ -13,7 +13,7 @@
     "dayjs": "^1.11.5",
     "lodash-es": "^4.17.21",
     "pinia": "2.0.30",
-    "vue": "3.2.47",
+    "vue": "3.3.4",
     "vue-router": "^4.1.6",
     "vue-types": "^4.2.1",
     "sortablejs": "^1.15.0"

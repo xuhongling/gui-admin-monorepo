@@ -192,7 +192,7 @@ export default [
     timeout: 100,
     method: 'get',
     response: () => {
-      return resultSuccess(menuList)
+      return resultSuccess(menuList);
     },
   },
   {
