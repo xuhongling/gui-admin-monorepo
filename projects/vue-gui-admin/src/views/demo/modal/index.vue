@@ -37,6 +37,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { type Nullable } from '@gui-pkg/types';
   import { shallowRef, ComponentOptions, ref, nextTick } from 'vue';
   import { Alert } from 'ant-design-vue';
   import { useModal } from '@gui-pkg/antdcomponents';

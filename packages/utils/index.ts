@@ -2,6 +2,7 @@ export {
   isEqual,
   isNil,
   cloneDeep,
+  uniq,
   uniqBy,
   isUndefined,
   clone,

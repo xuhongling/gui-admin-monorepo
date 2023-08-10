@@ -83,12 +83,48 @@ const demo: AppRouteModule = {
             title: 'RefForm',
           },
         },
-{
+        {
           path: 'ruleForm',
           name: 'RuleFormDemo',
           component: () => import('@/views/demo/form/RuleForm.vue'),
           meta: {
             title: '表单验证',
+          },
+        },
+      ],
+    },
+    {
+      path: 'tree',
+      name: 'TreeDemo',
+      redirect: '/demo/tree/basic',
+      component: getParentLayout('TreeDemo'),
+      meta: {
+        icon: 'carbon:tree-view-alt',
+        title: 'Tree',
+      },
+      children: [
+        {
+          path: 'basic',
+          name: 'BasicTreeDemo',
+          component: () => import('@/views/demo/tree/index.vue'),
+          meta: {
+            title: '基础树',
+          },
+        },
+        {
+          path: 'editTree',
+          name: 'EditTreeDemo',
+          component: () => import('@/views/demo/tree/EditTree.vue'),
+          meta: {
+            title: '可搜索/工具栏',
+          },
+        },
+        {
+          path: 'actionTree',
+          name: 'ActionTreeDemo',
+          component: () => import('@/views/demo/tree/ActionTree.vue'),
+          meta: {
+            title: '函数操作示例',
           },
         },
       ],
