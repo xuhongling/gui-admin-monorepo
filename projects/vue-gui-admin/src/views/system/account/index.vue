@@ -60,7 +60,7 @@
     toolbarConfig: {
       buttons: [
         {
-          content: '新增账号',
+          content: '新增菜单',
           buttonRender: {
             name: 'AButton',
             props: {

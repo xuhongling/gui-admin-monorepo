@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { pinia } from '@/store';
 import { resetRouter } from '@/router';
 import { deepMerge } from '@gui-pkg/utils';
-import { defaultConfig } from '@/init-application';
+import { defaultConfig } from '@/setting';
 
 // menu theme enum
 export enum ThemeEnum {

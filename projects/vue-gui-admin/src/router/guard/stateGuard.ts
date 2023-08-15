@@ -3,7 +3,7 @@ import { useAppStore } from '@/store/modules/app';
 // import { useMultipleTabStore } from '@/store/modules/multipleTab';
 import { useUserStore } from '@/store/modules/user';
 import { usePermissionStore } from '@/store/modules/permission';
-import { PageEnum } from '@gui-pkg/enums';
+import { PageEnum } from '@/setting';
 import { removeTabChangeListener } from './routeChange';
 
 export function createStateGuard(router: Router) {

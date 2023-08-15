@@ -8,7 +8,7 @@ import { toRaw } from 'vue';
 import { transformObjToRoute, flatMultiLevelRoutes } from '@/router/helper/routeHelper';
 import { transformRouteToMenu } from '@/router/helper/menuHelper';
 
-import { PageEnum } from '@gui-pkg/enums';
+import { PageEnum } from '@/setting';
 import { PermissionModeEnum } from '@gui-pkg/enums';
 
 import { asyncRoutes } from '@/router/routes';

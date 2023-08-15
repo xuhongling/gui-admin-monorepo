@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
   import { useGo } from '@/hooks/web/usePage';
-  import { PageEnum } from '@gui-pkg/enums';
+  import { PageEnum } from '@/setting';
   import { useUserStoreWithOut } from '@/store/modules/user';
   import { Layout } from 'ant-design-vue';
   import UserDropDown from './user-dropdown/index.vue'

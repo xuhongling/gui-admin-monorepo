@@ -6,7 +6,7 @@
   import netWorkSvg from '@/assets/svg/net-error.svg';
   import { useRoute } from 'vue-router';
   import { useGo, useRedo } from '@/hooks/web/usePage';
-  import { PageEnum } from '@gui-pkg/enums';
+  import { PageEnum } from '@/setting';
 
   interface MapValue {
     title: string;

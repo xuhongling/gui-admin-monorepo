@@ -16,7 +16,7 @@
 <script lang="ts" setup>
   import { ref, reactive, watch, unref } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  import { PageEnum } from '@gui-pkg/enums';
+  import { PageEnum } from '@/setting';
   import MenuItem from './subMenuItem.vue';
   import { useThrottleFn } from '@vueuse/core';
   import { getChildrenMenus, getCurrentParentPath, getMenus } from '@/router/menus';
