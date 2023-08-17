@@ -5,6 +5,8 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
+      "/@/*": ["src/*"],
+      "/#/*": ["types/*"],
       "@/*": ["src/*"],
       "#/*": ["types/*"]
     },
@@ -18,5 +20,6 @@
       "unplugin-vue-define-options/macros-global"
     ]
   },
-  "include": ["src", "mock", "vite.config.ts"]
+  "include": ["src", "mock", "vite.config.ts"],
+  "exclude": ["node_modules", "tests/server/**/*.ts", "dist", "**/*.js"]
 }

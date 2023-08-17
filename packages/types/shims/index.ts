@@ -1,4 +1,5 @@
-import './module'
+import './module.d'
 
-export * from './vue-router'
-export * from './pinia'
+export * from './pinia.d'
+export * from './vue-router.d'
+

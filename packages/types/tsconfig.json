@@ -5,5 +5,5 @@
     "module": "esnext",
     "baseUrl": "."
   },
-  "include": ["src", "shims", "shims.d.ts"]
+  "include": ["src", "shims", "shims.d.ts", "src/**/*.ts", "shims/**/*.d.ts",]
 }

@@ -10,6 +10,7 @@ import Antd from 'ant-design-vue';
 import { pinia } from '@/store';
 import 'ant-design-vue/dist/antd.less';
 import '@gui-pkg/styles';
+import '@/setting/styles.less';
 
 async function bootstrap() {
   const app = createApp(App);

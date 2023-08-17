@@ -41,17 +41,21 @@ const transform: AxiosTransform = {
     }
 
     //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-    const { code, result, message } = data
-    const { code: code1, detail, content  } = data
+    //const { code, result, message } = data
+    const { code, detail, content, result, message  } = data
 
-    let resultData = null
-    result ? resultData = result : resultData = detail
+    let resultData = null;
+    result ? resultData = result : resultData = detail;
+
+    // 定义请求返回的code成功的值，可以在外部设置
+    const resultSetting = context.resultSetting();
+    const SUCCESS = resultSetting ? resultSetting.SUCCESS : ResultEnum.SUCCESS;
 
     // 这里逻辑可以根据项目进行修改
-    const hasSuccess = data && Reflect.has(data, 'code') && (code1 === ResultEnum.SUCCESS || code === 0);
+    const hasSuccess = data && Reflect.has(data, 'code') && (code === SUCCESS);
 
     if (hasSuccess) {
-      if (content) {
+      if (content || message) {
         context.noticeFunction /*&& context.noticeFunction.success({
           content: content,
           duration: 2000,
@@ -67,14 +71,18 @@ const transform: AxiosTransform = {
     // 在此处根据自己项目的实际情况对不同的code执行不同的操作
     // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
     let timeoutMsg: any = ''
+    const TIMEOUT = resultSetting ? resultSetting.TIMEOUT : ResultEnum.TIMEOUT;
     switch (code) {
-      case ResultEnum.TIMEOUT:
+      case TIMEOUT:
         timeoutMsg = '登录超时,请重新登录!'
         context.timeoutFunction?.()
         break
       default:
         if (message) {
-          timeoutMsg = message ? message : content;
+          timeoutMsg = message ? message : '';
+        }
+        if (content) {
+          timeoutMsg = content ? content : '';
         }
     }
 

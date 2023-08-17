@@ -1,4 +1,4 @@
-import type { ProjectConfig, MenuSetting } from '@gui-pkg/types';
+import type { ProjectConfig, MenuSetting, MultiTabsSetting } from '@gui-pkg/types';
 import { defineStore } from 'pinia';
 import { pinia } from '@/store';
 import { resetRouter } from '@/router';
@@ -31,7 +31,7 @@ export const useAppStore = defineStore({
     getPageLoading(): boolean {
       return this.pageLoading as boolean;
     },
-    getDarkMode(): 'light' | 'dark' | string {
+    getDarkMode(): string {
       return this.darkMode || 'light';
     },
     getProjectConfig(): ProjectConfig {
@@ -39,6 +39,9 @@ export const useAppStore = defineStore({
     },
     getMenuSetting(): MenuSetting {
       return this.getProjectConfig.menuSetting;
+    },
+    getMultiTabsSetting(): MultiTabsSetting {
+      return this.getProjectConfig.multiTabsSetting;
     },
   },
   actions: {

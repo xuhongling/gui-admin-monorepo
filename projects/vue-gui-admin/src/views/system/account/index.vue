@@ -1,8 +1,8 @@
 <template>
-  <PageWrapper dense contentFullHeight fixedHeight contentClass="flex">
+  <PageWrapper contentFullHeight fixedHeight contentClass="flex">
     <DeptTree class="w-1/4 xl:w-1/5" @select="handleSelect" />
-    <div class="w-3/4 xl:w-4/5 p-5">
-      <VxeBasicTable class="w-full h-full" ref="tableRef" v-bind="gridOptions">
+    <div class="w-3/4 xl:w-4/5 pl-5">
+      <VxeBasicTable ref="tableRef" v-bind="gridOptions">
         <template #action="{ row }">
           <a-space>
             <a-tooltip placement="bottom">

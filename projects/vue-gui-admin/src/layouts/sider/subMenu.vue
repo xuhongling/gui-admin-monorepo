@@ -3,9 +3,10 @@
     <a-menu
       v-model:selected-keys="state.selectedKeys"
       :open-keys="menuState.openNames"
-      mode="inline"
-      :collapsed="props.collapsed"
-      collapsible
+      :subMenuOpenDelay="0.2"
+      :mode="menuState.mode"
+      :theme="menuState.theme"
+      :inlineCollapsed="menuState.collapsed"
       @click="clickMenuItem"
     >
       <MenuItem v-for="item in splitMenusRef" :key="item.path" :menuInfo="item" />
@@ -40,10 +41,6 @@
 
   const throttleHandleSplitLeftMenu = useThrottleFn(handleSplitLeftMenu, 50);
 
-  const props = defineProps({
-    collapsed: { type: Boolean },
-  });
-
   const state = reactive({
     defaultSelectedKeys: [] as string[],
     openKeys: [] as string[],
@@ -52,6 +49,9 @@
   });
 
   const menuState = reactive<MenuState>({
+    mode: 'inline', // 菜单类型，现在支持垂直、水平、和内嵌模式三种 vertical | horizontal | inline
+    theme: 'light', // 菜单主题  light | dark
+    collapsed: false, // 菜单折叠状态
     activeName: '',
     openNames: [],
     activeSubMenuNames: [],
@@ -144,7 +144,7 @@
   watch(
     () => currentRoute.fullPath,
     async () => {
-      if (currentRoute.name === PageEnum.BASE_LOGIN || props.collapsed) return;
+      if (currentRoute.name === PageEnum.BASE_LOGIN || menuState.collapsed) return;
       state.openKeys = getOpenKeys();
       const meta = currentRoute.meta;
       let menusData = await getMenus();

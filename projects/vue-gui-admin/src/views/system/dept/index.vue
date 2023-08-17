@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full p-5">
+  <PageWrapper contentFullHeight fixedHeight>
     <VxeBasicTable class="w-full h-full" ref="tableRef" v-bind="gridOptions">
       <template #action="{ row }">
         <a-space>
@@ -27,13 +27,13 @@
       </template>
     </VxeBasicTable>
     <DeptModal @register="registerModal" @success="handleSuccess" />
-  </div>
+  </PageWrapper>
 </template>
 
 <script lang="ts" setup>
   import { ref, reactive } from 'vue';
   import { Icon } from '@gui-pkg/components';
-  import { BasicTableProps, VxeBasicTable, VxeGridInstance, useModal } from '@gui-pkg/antdcomponents';
+  import { PageWrapper, BasicTableProps, VxeBasicTable, VxeGridInstance, useModal } from '@gui-pkg/antdcomponents';
   import { columns, searchFormSchema } from './dept.data';
   import { getDeptList } from '@/api/demo/system';
   import DeptModal from './DeptModal';

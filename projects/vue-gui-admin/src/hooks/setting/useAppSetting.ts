@@ -1,4 +1,4 @@
-import type { MenuSetting, ProjectConfig } from '@gui-pkg/types';
+import type { MenuSetting, ProjectConfig, MultiTabsSetting } from '@gui-pkg/types';
 import { computed } from 'vue';
 import { useAppStore, ThemeEnum } from '@/store/modules/app';
 
@@ -27,7 +27,6 @@ export function useRootSetting() {
   return {
     setRootSetting,
     setDarkMode,
-
     getDarkMode,
     getPermissionMode,
   };
@@ -49,5 +48,22 @@ export function useMenuSetting() {
     getCollapsed,
     getSplit,
     setMenuSetting,
+  };
+}
+
+// 多标签页配置
+export function useMultipleTabSetting() {
+  const appStore = useAppStore();
+
+  const getShowMultipleTab = computed(() => appStore.getMultiTabsSetting.show);
+
+  // Set multipleTabSetting configuration
+  function setMultipleTabSetting(multiTabsSetting: Partial<MultiTabsSetting>): void {
+    appStore.setProjectConfig({ multiTabsSetting });
+  }
+
+  return {
+    getShowMultipleTab,
+    setMultipleTabSetting,
   };
 }

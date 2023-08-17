@@ -9,9 +9,12 @@ export const defaultConfig: ProjectConfig = {
   // BACK: 后台模式，动态获取
   permissionMode: PermissionModeEnum.ROUTE_MAPPING,
   // 菜单设置，后面再完善菜单设置
-  // split： 是否拆分菜单
   menuSetting: {
-    collapsed: true,
-    split: true,
+    collapsed: true,  // 菜单折叠状态
+    split: true,  // 是否拆分菜单
+  },
+  // 标签页设置
+  multiTabsSetting: {
+    show: false, // 是否显示标签页
   },
 };

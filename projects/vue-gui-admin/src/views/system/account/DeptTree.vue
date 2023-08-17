@@ -1,5 +1,5 @@
 <template>
-  <div class="m-5 mr-0 overflow-hidden bg-white w-1/4 xl:w-1/5">
+  <div class="mr-0 overflow-hidden bg-white w-1/4 xl:w-1/5">
     <div class="tree-header flex px-2 py-1.5 items-center">
       <div class="basic-title">部门列表</div>
     </div>

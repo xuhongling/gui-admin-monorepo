@@ -4,8 +4,6 @@
       v-model:selected-keys="state.selectedKeys"
       :open-keys="state.openKeys"
       mode="horizontal"
-      :collapsed="props.collapsed"
-      collapsible
       @click="clickMenuItem"
     >
       <MenuItem v-for="item in menusRef" :key="item.path" :menuInfo="item" />
@@ -33,10 +31,6 @@
   const currentRoute = useRoute();
   const router = useRouter();
   const permissionStore = usePermissionStoreWithOut();
-
-  const props = defineProps({
-    collapsed: { type: Boolean },
-  });
 
   const state = reactive({
     defaultSelectedKeys: [] as string[],

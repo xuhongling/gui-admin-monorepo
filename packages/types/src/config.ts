@@ -45,12 +45,12 @@ export interface GlobEnvConfig {
 }
 
 export interface MultiTabsSetting {
-  cache: boolean;
-  show: boolean;
-  showQuick: boolean;
-  canDrag: boolean;
-  showRedo: boolean;
-  showFold: boolean;
+  cache?: boolean;
+  show?: boolean;
+  showQuick?: boolean;
+  canDrag?: boolean;
+  showRedo?: boolean;
+  showFold?: boolean;
 }
 
 export interface MenuSetting {
@@ -74,6 +74,8 @@ export interface ProjectConfig {
   permissionMode: PermissionModeEnum
   // menuSetting
   menuSetting: MenuSetting
+  // Multi-tab settings
+  multiTabsSetting: MultiTabsSetting
   // Storage location of permission related information
   permissionCacheType?: CacheTypeEnum
   // Whether to show the configuration button
@@ -92,8 +94,6 @@ export interface ProjectConfig {
   showLogo?: boolean
   // Whether to show the global footer
   showFooter?: boolean
-  // Multi-tab settings
-  multiTabsSetting?: MultiTabsSetting
   // Whether to open the top progress bar
   openNProgress?: false
   // pageLayout whether to enable keep-alive

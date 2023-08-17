@@ -5,7 +5,7 @@
       <h2 class="ml-1 truncate md:opacity-100 title">{{ projectName }}</h2>
     </div>
     <div class="layout-header-menu">
-      <LayoutMenu :collapsed="props.collapsed" />
+      <LayoutMenu />
     </div>
     <!-- action  -->
     <div class="layout-header-action">
@@ -27,10 +27,6 @@
   const userStore = useUserStoreWithOut();
   const go = useGo();
 
-  const props = defineProps({
-    collapsed: { type: Boolean },
-  });
-
   function goHome() {
     go(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
   }
@@ -46,6 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid #eee;
     &-logo {
       width: 300px;
       display: flex;

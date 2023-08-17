@@ -9,7 +9,8 @@ export interface ContextOptions {
   unauthorizedFunction: (msg?: string) => void
   timeoutFunction: () => void
   handleErrorFunction: (message?: string, mode?: ErrorMessageMode) => void
-  apiUrl?: string
+  apiUrl?: string,
+  resultSetting: AnyFunction<any>
 }
 
 export let context: ContextOptions = {
@@ -22,6 +23,7 @@ export let context: ContextOptions = {
   handleErrorFunction: () => {},
   timeoutFunction: () => {},
   apiUrl: '',
+  resultSetting: () => {},
 }
 
 export const initRequest = async (func: AnyFunction<any>) => {

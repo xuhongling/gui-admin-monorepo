@@ -63,5 +63,7 @@
 </script>
 
 <style lang="less" rel="stylesheet/less" scoped>
-
+  .layout-menu-item-name {
+    margin-left: 8px;
+  }
 </style>

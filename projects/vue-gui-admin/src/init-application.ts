@@ -3,6 +3,7 @@ import { deepMerge, getGlobalConfig } from '@gui-pkg/utils'
 import { useMessage } from '@/hooks/web/useMessage'
 import { useUserStoreWithOut } from '@/store/modules/user'
 import { useAppStoreWithOut } from '@/store/modules/app'
+import { ResultEnum } from '@/setting'
 // To decouple the modules below `packages/*`, they no longer depend on each other
 // If the modules are heavily dependent on each other, you need to provide a decoupling method, and the caller will pass the parameters
 // Each module needs to provide `bridge` file as a decoupling method
@@ -17,6 +18,7 @@ async function initPackages() {
     await initRequest(()=> {
       return {
         apiUrl,
+        resultSetting: () => ResultEnum,
         getTokenFunction: () => {
           const userStore = useUserStoreWithOut()
           return userStore.getToken

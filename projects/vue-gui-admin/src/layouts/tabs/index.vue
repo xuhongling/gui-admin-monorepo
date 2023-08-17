@@ -7,6 +7,7 @@
       class="tabs"
       @change="changePage"
       @edit="editTabItem"
+      v-if="getShowMultipleTab"
     >
       <Tabs.TabPane v-for="pageItem in tabsList" :key="pageItem.fullPath">
         <template #tab>
@@ -77,7 +78,7 @@
         </Dropdown>
       </template>
     </Tabs>
-    <div class="tabs-view-content">
+    <div :class="[getShowMultipleTab ? 'tabs-view-content-tab-bar-height' : 'tabs-view-content', pathName]">
       <router-view v-slot="{ Component }">
         <template v-if="Component">
           <transition
@@ -114,6 +115,7 @@
   import { useMultipleTabWithOutStore, blackList } from '@/store/modules/multipleTab';
   import { useKeepAliveStoreWithOut } from '@/store/modules/keepAlive';
   import { REDIRECT_NAME } from '@/router/constant';
+  import { useMultipleTabSetting } from '@/hooks/setting/useAppSetting';
 
   type RouteItem = Omit<RouteLocation, 'matched' | 'redirectedFrom'>;
 
@@ -121,9 +123,15 @@
   const router = useRouter();
   const multipleTabStore = useMultipleTabWithOutStore();
   const keepAliveStore = useKeepAliveStoreWithOut();
+  const { getShowMultipleTab } = useMultipleTabSetting();
   const { getWebStorage, setWebStorage } = useWebStorage();
 
   const activeKey = computed(() => multipleTabStore.getCurrentTab?.fullPath);
+
+  // 获取路由地址，判断页面，给tabs-view-content增加class，方便设置CSS
+  const pathName = computed(() => {
+    return route.name
+  });
 
   // 标签页列表
   const tabsList = computed(() => multipleTabStore.getTabsList);
@@ -224,7 +232,6 @@
 
 <style lang="less" rel="stylesheet/less" scoped>
   .tabs-view {
-    border-top: 1px solid #eee;
     ::v-deep(.tabs) {
       .ant-tabs-nav {
         user-select: none;
@@ -313,10 +320,15 @@
     }
 
     .tabs-view-content {
+      position: relative;
+      height: calc(100vh - var(--header-height));
+      overflow: auto;
+    }
+
+    .tabs-view-content-tab-bar-height {
+      position: relative;
       height: calc(100vh - var(--header-height) - var(--tab-bar-height));
       overflow: auto;
-      position: relative;
-      // padding: 16px;
     }
   }
 </style>

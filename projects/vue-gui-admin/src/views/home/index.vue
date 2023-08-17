@@ -35,8 +35,6 @@
   }
 
   onMounted(async () => {
-    const menuList = await getMenuList();
-    console.log(menuList, 'menuList');
     addMapData();
   });
 </script>

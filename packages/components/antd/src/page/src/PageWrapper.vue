@@ -56,6 +56,7 @@
   const headerRef = ref(null);
   const contentRef = ref(null);
   const footerRef = ref(null);
+  const offsetHeightRef = ref(-16);
 
   const getIsContentFullHeight = computed(() => {
     return props.contentFullHeight;
@@ -68,7 +69,9 @@
     [headerRef, footerRef],
     [contentRef],
     getUpwardSpace,
+    offsetHeightRef,
   );
+
   setCompensation({ useLayoutFooter: true, elements: [footerRef] });
 
   const getClass = computed(() => {
