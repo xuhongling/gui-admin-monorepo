@@ -8,7 +8,7 @@
     "@gui-pkg/enums": "workspace:*",
     "@gui-pkg/utils": "workspace:*",
     "@vueuse/core": "^9.12.0",
-    "echarts": "^5.3.2",
+    "echarts": "^5.4.3",
     "lodash-es": "^4.17.21",
     "vue": "3.3.4",
     "vue-router": "^4.1.6"

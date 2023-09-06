@@ -11,16 +11,16 @@ const vxeTable = {
       isHover: true,
     },
     rowConfig: {
-      isCurrent: true,
+      isCurrent: false,
       isHover: true,
     },
     emptyRender: {
       name: 'AEmpty',
     },
-    printConfig: {},
-    exportConfig: {},
+    printConfig: {},  // 打印配置项
+    exportConfig: {}, // 导出配置项
     customConfig: {
-      storage: true,
+      storage: true, // 是否启用 localStorage 本地保存，会将列操作状态保留在本地
     },
   },
   grid: {
@@ -40,7 +40,7 @@ const vxeTable = {
     proxyConfig: {
       form: true,
       props: {
-        result: 'items',
+        result: 'list',
         total: 'total',
       },
     },

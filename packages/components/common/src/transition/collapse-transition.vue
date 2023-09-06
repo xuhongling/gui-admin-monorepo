@@ -7,6 +7,8 @@
 <script setup lang="ts">
   import { addClass, removeClass } from '@gui-pkg/utils'
 
+  defineOptions({ name: 'CollapseTransition' });
+
   const on = {
     beforeEnter(el) {
       addClass(el, 'collapse-transition')

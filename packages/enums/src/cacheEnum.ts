@@ -10,6 +10,9 @@ export const USER_INFO_KEY = 'USER__INFO__';
 // 角色信息
 export const ROLES_KEY = 'ROLES__KEY__';
 
+// 菜单信息
+export const MENUS_KEY = 'MENUS__KEY__';
+
 // project config key
 export const PROJ_CFG_KEY = 'PROJ__CFG__KEY__';
 

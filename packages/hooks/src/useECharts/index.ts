@@ -30,8 +30,8 @@ export function useECharts(elRef: Ref<HTMLDivElement>, theme: 'light' | 'dark' |
     grid: {
       top: '70',
       left: '3%',
-      right: '4%',
-      bottom: '4%',
+      right: '3%',
+      bottom: '3%',
       containLabel: true,
     },
     tooltip: {

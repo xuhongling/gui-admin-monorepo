@@ -15,14 +15,15 @@ import { useMutationObserver, useWindowResize } from '@gui-pkg/hooks'
 const props = {
   loading: { type: Boolean },
   useWrapper: { type: Boolean, default: true },
-  modalHeaderHeight: { type: Number, default: 57 },
-  modalFooterHeight: { type: Number, default: 74 },
+  modalHeaderHeight: { type: Number, default: 56 },
+  modalFooterHeight: { type: Number, default: 54 },
   minHeight: { type: Number, default: 300 },
   height: { type: Number },
   footerOffset: { type: Number, default: 0 },
   visible: { type: Boolean },
   fullScreen: { type: Boolean },
   loadingTip: { type: String },
+  isTitle: { type: String },
 }
 
 export default defineComponent({
@@ -58,12 +59,18 @@ export default defineComponent({
       redoModalHeight: setModalHeight,
     })
 
-    const spinStyle = computed((): CSSProperties => {
+    /*const spinStyle = computed((): CSSProperties => {
       return {
         minHeight: `${props.minHeight}px`,
-        [props.fullScreen ? 'height' : 'maxHeight']: `${unref(
-          realHeightRef,
-        )}px`,
+        [props.fullScreen ? 'height' : 'maxHeight']: `${unref(realHeightRef)}px`,
+      }
+    })*/
+    const spinStyle = computed((): CSSProperties => {
+      const modalHeaderHeight = props.isTitle ? props.modalHeaderHeight : 0;
+      const height = unref(realHeightRef) - props.modalFooterHeight - modalHeaderHeight - 30;
+      return {
+        minHeight: `${props.minHeight}px`,
+        height: props.fullScreen ? `${unref(realHeightRef) - 28}px` : `${height}px`,
       }
     })
 
@@ -140,11 +147,8 @@ export default defineComponent({
         // }
 
         if (props.fullScreen) {
-          realHeightRef.value =
-            window.innerHeight -
-            props.modalFooterHeight -
-            props.modalHeaderHeight -
-            28
+          const modalHeaderHeight = props.isTitle ? props.modalHeaderHeight : 0;
+          realHeightRef.value =  window.innerHeight - props.modalFooterHeight - modalHeaderHeight
         } else {
           realHeightRef.value = props.height
             ? props.height

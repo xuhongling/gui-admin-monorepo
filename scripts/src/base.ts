@@ -35,7 +35,7 @@ async function baseScript(command: string, isFilterWorkspace: boolean) {
       throw new Error('No items meet the requirements!')
     }
     if (workspacePackages.length === 1) {
-      await runScript(['--filter', workspacePackages[0].name], command)
+      await runScript(['--no-daemon', '--filter', workspacePackages[0].name], command)
       return
     }
     const choices = workspacePackages.map((item) => ({
@@ -57,9 +57,9 @@ async function baseScript(command: string, isFilterWorkspace: boolean) {
 
     const scriptArgv = isArray(packages)
       ? packages
-          .map((argvItem) => ['--filter', argvItem])
+          .map((argvItem) => ['--no-daemon', '--filter', argvItem])
           .flatMap((argvItem) => argvItem)
-      : ['--filter', packages || '']
+      : ['--no-daemon', '--filter', packages || '']
     await runScript(scriptArgv, command)
   } catch (e) {
     throw e

@@ -28,6 +28,7 @@ export const basicProps: any = Object.assign({}, modalProps, {
   useWrapper: { type: Boolean, default: true },
   loading: { type: Boolean },
   loadingTip: { type: String },
+  isTitle: { type: String },
   /**
    * @description: Show close button
    */

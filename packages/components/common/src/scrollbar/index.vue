@@ -28,6 +28,8 @@
   import { toObject } from './util'
   import Bar from './bar'
 
+  defineOptions({ name: 'Scrollbar' });
+
   const props = defineProps({
     native: {
       type: Boolean,
@@ -122,6 +124,7 @@
     &__wrapper {
       height: 100%;
       overflow: auto;
+      margin-bottom: 0px;
 
       &.hidden-default {
         scrollbar-width: none;

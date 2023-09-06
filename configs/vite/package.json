@@ -19,7 +19,7 @@
     "pkg-types": "^1.0.1",
     "rollup-plugin-visualizer": "^5.9.0",
     "tsconfig": "workspace:*",
-    "vite": "4.4.1",
+    "vite": "4.4.9",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-mock": "^2.9.6",

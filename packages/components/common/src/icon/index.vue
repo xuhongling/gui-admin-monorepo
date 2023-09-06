@@ -8,6 +8,8 @@
   import { createNamespace, isString } from '@gui-pkg/utils'
   import Iconify from '@purge-icons/generated'
 
+  defineOptions({ name: 'Icon' });
+
   const props = defineProps({
     color: { type: String },
     size: {

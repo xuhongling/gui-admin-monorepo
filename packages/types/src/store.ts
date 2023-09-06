@@ -13,9 +13,10 @@ export interface RoleInfo {
 export interface UserInfo {
   userId: string | number
   username: string
-  realName: string
+  realName?: string
   avatar: string
   desc?: string
   homePath?: string
   roles: RoleInfo[]
+  realname?: string
 }

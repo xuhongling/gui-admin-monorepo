@@ -364,14 +364,14 @@ export function createCellRender(
         },
         placeholder && isEmptyValue(cellLabel)
           ? [
-              h(
-                'span',
-                {
-                  class: 'vxe-cell--placeholder',
-                },
-                formatText(placeholder),
-              ),
-            ]
+            h(
+              'span',
+              {
+                class: 'vxe-cell--placeholder',
+              },
+              formatText(placeholder),
+            ),
+          ]
           : formatText(cellLabel),
       ),
     ];

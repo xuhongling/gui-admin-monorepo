@@ -5,7 +5,7 @@ import { basicProps } from './props';
 import { ignorePropKeys } from './const';
 import { basicEmits } from './emits';
 import XEUtils from 'xe-utils';
-import type {VxeGridInstance, VxeGridEventProps, GridMethods, TableMethods, TableEditMethods, TableValidatorMethods } from 'vxe-table';
+import type { VxeGridInstance, VxeGridEventProps, GridMethods, TableMethods, TableEditMethods, TableValidatorMethods } from 'vxe-table';
 import { Grid as VxeGrid } from 'vxe-table';
 
 import { extendSlots, omit } from '@gui-pkg/utils';
@@ -96,7 +96,7 @@ export default defineComponent({
       <div class={`h-full flex flex-col bg-white ${this.getWrapperClass}`}>
         <VxeGrid
           ref="tableElRef"
-          class={`vxe-grid_scrollbar px-6 py-4 ${tableClass}`}
+          class={`vxe-grid_scrollbar px-4 py-4 ${tableClass}`}
           style={tableStyle}
           {...this.getBindGridValues}
         >
