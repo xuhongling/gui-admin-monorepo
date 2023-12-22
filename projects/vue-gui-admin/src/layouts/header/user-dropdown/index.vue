@@ -21,7 +21,7 @@
   import { useUserStoreWithOut } from '@/store/modules/user';
   import MenuItem from './DropMenuItem.vue';
 
-  import headerImg from '@/assets/images/user.jpg';
+  import headerImg from '@/assets/images/personal.png';
 
   const userStore = useUserStoreWithOut();
   const getUserInfo = computed(() => {

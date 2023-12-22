@@ -12,7 +12,7 @@ export enum ThemeEnum {
 }
 
 interface AppState {
-  darkMode?: ThemeEnum;
+  themeMode?: ThemeEnum;
   // Page loading status
   pageLoading?: boolean;
   // project config
@@ -23,7 +23,7 @@ let timeId: TimeoutHandle;
 export const useAppStore = defineStore({
   id: 'app',
   state: (): AppState => ({
-    darkMode: undefined,
+    themeMode: undefined,
     pageLoading: false,
     projectConfig: defaultConfig,
   }),
@@ -31,8 +31,8 @@ export const useAppStore = defineStore({
     getPageLoading(): boolean {
       return this.pageLoading as boolean;
     },
-    getDarkMode(): string {
-      return this.darkMode || 'light';
+    getThemeMode(): string {
+      return this.themeMode || 'light';
     },
     getProjectConfig(): ProjectConfig {
       return this.projectConfig || ({} as ProjectConfig);
@@ -48,8 +48,8 @@ export const useAppStore = defineStore({
     setPageLoading(loading: boolean): void {
       this.pageLoading = loading;
     },
-    setDarkMode(mode: ThemeEnum): void {
-      this.darkMode = mode;
+    setThemeMode(mode: ThemeEnum): void {
+      this.themeMode = mode;
     },
     setProjectConfig(config: DeepPartial<ProjectConfig>): void {
       this.projectConfig = deepMerge(this.projectConfig || {}, config);

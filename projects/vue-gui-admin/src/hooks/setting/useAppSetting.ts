@@ -11,7 +11,7 @@ type RootSetting = Omit<
 export function useRootSetting() {
   const appStore = useAppStore();
 
-  const getDarkMode = computed(() => appStore.getDarkMode);
+  const getThemeMode = computed(() => appStore.getThemeMode);
 
   const getPermissionMode = computed(() => appStore.getProjectConfig.permissionMode);
 
@@ -19,15 +19,15 @@ export function useRootSetting() {
     appStore.setProjectConfig(setting)
   }
 
-  function setDarkMode(mode: ThemeEnum) {
-    appStore.setDarkMode(mode);
+  function setThemeMode(mode: ThemeEnum) {
+    appStore.setThemeMode(mode);
   }
 
 
   return {
     setRootSetting,
-    setDarkMode,
-    getDarkMode,
+    setThemeMode,
+    getThemeMode,
     getPermissionMode,
   };
 }

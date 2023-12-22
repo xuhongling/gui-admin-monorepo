@@ -10,15 +10,13 @@ import { useBreakpoint } from '../useBreakpoint';
 
 // import echarts from './lib/echarts';
 import * as echarts from 'echarts';
-// import { useRootSetting } from '/@/hooks/setting/useRootSetting';
 
 export function useECharts(elRef: Ref<HTMLDivElement>, theme: 'light' | 'dark' | 'default' = 'default') {
-  //const { getDarkMode: getSysDarkMode } = useRootSetting();
 
   const getDarkMode = computed(() => {
-    // return theme === 'default' ? getSysDarkMode.value : theme;
-    return 'default';
+    return theme === 'default' ? 'light' : theme;
   });
+
   let chartInstance: echarts.ECharts | null = null;
   let resizeFn: AnyFunction<any> = resize;
   const cacheOptions = ref({}) as Ref<EChartsOption>;

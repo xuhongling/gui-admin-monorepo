@@ -27,7 +27,7 @@ export const resultPageSuccess = <T = any>(
 
   return {
     ...resultSuccess({
-      items: pageData,
+      list: pageData,
       total: list.length,
     }),
     message,

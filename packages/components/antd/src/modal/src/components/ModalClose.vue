@@ -84,7 +84,10 @@
     }
 
     & span:nth-child(1) {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
       padding: 10px;
 
       &:hover {

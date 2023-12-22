@@ -12,9 +12,10 @@ export default {
       params: XEUtils.get(params, 'row'),
     };
   }),
-  renderItemContent: createFormItemRender({}, (_, params) => {
+  renderItemContent: createFormItemRender(),
+  /*renderItemContent: createFormItemRender({}, (_, params) => {
     return {
       params: XEUtils.get(params, 'row'),
     };
-  }),
+  }),*/
 };

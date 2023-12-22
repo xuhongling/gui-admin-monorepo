@@ -16,7 +16,7 @@
     "ant-design-vue": "^3.2.20",
     "exceljs": "^4.3.0",
     "sass": "^1.55.0",
-    "vue": "3.3.4",
+    "vue": "3.3.7",
     "vxe-table": "^4.4.7",
     "vxe-table-plugin-export-xlsx": "^3.0.5",
     "xe-utils": "^3.5.11"

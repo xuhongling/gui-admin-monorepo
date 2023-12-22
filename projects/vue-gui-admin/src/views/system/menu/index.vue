@@ -78,7 +78,7 @@
       ajax: {
         query: async () => {
           const tableListData = await getMenuList();
-          return { items: tableListData };
+          return { list: tableListData };
         },
       },
     },

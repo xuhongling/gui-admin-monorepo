@@ -40,10 +40,10 @@ function getAppConfig(env: Record<string, any>) {
     env.DEV
       ? // Get the global configuration (the configuration will be extracted independently when packaging)
         env
-      : window[ENV_NAME]
+      : env // window[ENV_NAME]
   ) as GlobEnvConfig
 
-  const { VITE_GLOB_APP_SHORT_NAME } = ENV
+  const { VITE_GLOB_APP_SHORT_NAME = '' } = ENV
 
   if (!/^[a-zA-Z\_]*$/.test(VITE_GLOB_APP_SHORT_NAME)) {
     console.warn(
