@@ -102,6 +102,21 @@ export default defineComponent({
       return disabled;
     });
 
+    const getReadonly = computed(() => {
+      const { readonly: globReadonly } = props.formProps;
+      const { dynamicReadonly } = props.schema;
+      const { readonly: itemReadonly = false } = unref(getComponentsProps);
+
+      let readonly = globReadonly || itemReadonly;
+      if (isBoolean(dynamicReadonly)) {
+        readonly = dynamicReadonly;
+      }
+      if (isFunction(dynamicReadonly)) {
+        readonly = dynamicReadonly(unref(getValues));
+      }
+      return readonly;
+    });
+
     function getShow(): { isShow: boolean; isIfShow: boolean } {
       const { show, ifShow } = props.schema;
       const { showAdvancedButton } = props.formProps;
@@ -265,6 +280,7 @@ export default defineComponent({
         size,
         ...unref(getComponentsProps),
         disabled: unref(getDisable),
+        readonly: unref(getReadonly),
       };
 
       const isCreatePlaceholder = !propsData.disabled && autoSetPlaceHolder;
@@ -290,7 +306,12 @@ export default defineComponent({
         return <Comp {...compAttr} />;
       }
       const compSlot = isFunction(renderComponentContent)
-        ? { ...renderComponentContent(unref(getValues), { disabled: unref(getDisable) }) }
+        ? {
+            ...renderComponentContent(unref(getValues), {
+              disabled: unref(getDisable),
+              readonly: unref(getReadonly),
+            }),
+          }
         : {
             default: () => renderComponentContent,
           };
@@ -299,12 +320,13 @@ export default defineComponent({
 
     function renderLabelHelpMessage() {
       const { label, helpMessage, helpComponentProps, subLabel } = props.schema;
+      const getLabel = isFunction(label) ? label(unref(getValues)) : label;
       const renderLabel = subLabel ? (
         <span>
-          {label} <span class="text-secondary">{subLabel}</span>
+          {getLabel} <span class="text-secondary">{subLabel}</span>
         </span>
       ) : (
-        label
+        getLabel
       );
       const getHelpMessage = isFunction(helpMessage)
         ? helpMessage(unref(getValues))
@@ -324,7 +346,7 @@ export default defineComponent({
       const { itemProps, slot, render, field, suffix, component } = props.schema;
       const { labelCol, wrapperCol } = unref(itemLabelWidthProp);
       const { colon } = props.formProps;
-      const opts = { disabled: unref(getDisable) };
+      const opts = { disabled: unref(getDisable), readonly: unref(getReadonly) };
       if (component === 'Divider') {
         return (
           <Col span={24}>
@@ -344,7 +366,7 @@ export default defineComponent({
         const getSuffix = isFunction(suffix) ? suffix(unref(getValues)) : suffix;
 
         // TODO 自定义组件验证会出现问题，因此这里框架默认将自定义组件设置手动触发验证，如果其他组件还有此问题请手动设置autoLink=false
-        if (NO_AUTO_LINK_COMPONENTS.includes(component)) {
+        if (component && NO_AUTO_LINK_COMPONENTS.includes(component)) {
           props.schema &&
             (props.schema.itemProps! = {
               autoLink: false,
@@ -382,7 +404,7 @@ export default defineComponent({
       const realColProps = { ...baseColProps, ...colProps };
       const { isIfShow, isShow } = getShow();
       const values = unref(getValues);
-      const opts = { disabled: unref(getDisable) };
+      const opts = { disabled: unref(getDisable), readonly: unref(getReadonly) };
 
       const getContent = () => {
         return colSlot

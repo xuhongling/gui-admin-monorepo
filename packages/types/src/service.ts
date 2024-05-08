@@ -32,3 +32,16 @@ export interface RequestResult<T = any> {
   message?: string;
   content?: string;
 }
+
+// multipart/form-data: upload file
+export interface UploadFileParams {
+  // Other parameters
+  data?: any;
+  // File parameter interface field name
+  name?: string;
+  // file name
+  file: File | Blob;
+  // file name
+  filename?: string;
+  [key: string]: any;
+}

@@ -3,6 +3,7 @@ export * from './src/useAttrs'
 export * from './src/useContentHeight'
 export * from './src/useBreakpoint'
 export * from './src/useContext'
+export * from './src/useCopyToClipboard'
 export * from './src/useEventListener'
 export * from './src/usePage'
 export * from './src/usePagination'
@@ -13,7 +14,6 @@ export * from './src/useScroll'
 export * from './src/useScrollTo'
 export * from './src/useTimeout'
 export * from './src/useWindowResize'
-
 
 export {
   useTimeoutFn,

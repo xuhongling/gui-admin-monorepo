@@ -1,11 +1,7 @@
 import type { Ref } from 'vue'
 import { ref, unref, computed } from 'vue'
 
-const pagination = <T = any>(
-  list: T[],
-  pageNo: number,
-  pageSize: number,
-): T[] => {
+const pagination = <T = any>(list: T[], pageNo: number, pageSize: number, ): T[] => {
   const offset = (pageNo - 1) * Number(pageSize)
   const ret =
     offset + Number(pageSize) >= list.length
@@ -34,5 +30,11 @@ export const usePagination = <T = any>(list: Ref<T[]>, pageSize: number) => {
     pageSizeRef.value = pageSize
   }
 
-  return { setCurrentPage, getTotal, setPageSize, getPaginationList }
+  return {
+    setCurrentPage,
+    getTotal,
+    setPageSize,
+    getPaginationList,
+    currentPage
+  }
 }

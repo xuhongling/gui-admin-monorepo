@@ -1,5 +1,5 @@
 <template>
-  <a-cascader
+  <Cascader
     v-model:value="state"
     :options="options"
     :load-data="loadData"
@@ -16,10 +16,10 @@
         请等待数据加载完成...
       </span>
     </template>
-  </a-cascader>
+  </Cascader>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, ref, unref, watch, watchEffect } from 'vue'
+import { defineComponent, PropType, ref, unref, watch } from 'vue'
 import { Cascader } from 'ant-design-vue'
 import { isFunction, get, omit, propTypes } from '@gui-pkg/utils'
 import { useRuleFormItem } from '../hooks/useFormItem.ts'
@@ -157,9 +157,15 @@ export default defineComponent({
       }
     }
 
-    watchEffect(() => {
-      props.immediate && initialFetch()
-    })
+    watch(
+      () => props.immediate,
+      () => {
+        props.immediate && initialFetch();
+      },
+      {
+        immediate: true,
+      },
+    );
 
     watch(
       () => props.initFetchParams,

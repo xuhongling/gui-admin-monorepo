@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, onMounted } from 'vue';
-  import { initBasicMap } from './olMap';
+  import { ref, onMounted, onUnmounted } from 'vue';
+  import { initBasicMap, getGlobalMap } from './olMap';
 
   const wrapRef = ref<HTMLDivElement | null>(null);
 
@@ -21,6 +21,22 @@
 
   onMounted(() => {
     initBasicMap(wrapRef);
+  });
+
+  onUnmounted(() => {
+    const olMap = getGlobalMap();
+    if (olMap) {
+      const layers = olMap.getAllLayers();
+      for (let i = 0; i < layers.length; i++) {
+        const layer = layers[i];
+        const layerName = layer.get('layerName');
+        if (layerName) {
+          layer.getSource().clear(true)
+        }
+      }
+      olMap.setTarget(null);
+      olMap.dispose();
+    }
   });
 </script>
 

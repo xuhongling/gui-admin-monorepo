@@ -89,13 +89,16 @@
       justify-content: center;
       height: 100%;
       padding: 10px;
-
       &:hover {
         color: var(--primary-color);
       }
     }
 
     & span:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
       &:hover {
         color: var(--error-color);
       }

@@ -24,15 +24,15 @@
     "ant-design-vue": "^3.2.20",
     "dayjs": "^1.11.5",
     "exceljs": "^4.3.0",
-    "gmap-ol": "^0.4.6",
+    "gmap-ol": "^0.6.2",
     "mockjs": "^1.1.0",
     "monaco-editor": "^0.34.1",
     "nprogress": "^0.2.0",
-    "ol": "^6.15.0",
+    "ol": "^9.1.0",
     "path-to-regexp": "^6.2.0",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.1.0",
-    "vue": "3.3.7",
+    "vue": "3.3.13",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
@@ -42,8 +42,8 @@
     "@purge-icons/generated": "^0.8.1",
     "@types/mockjs": "^1.0.7",
     "typescript": "^5.2.2",
-    "vite": "4.4.9",
-    "vue-tsc": "^1.0.3"
+    "vite": "4.5.2",
+    "vue-tsc": "^1.8.27"
   },
   "engines": {
     "node": "^14 || >=16"

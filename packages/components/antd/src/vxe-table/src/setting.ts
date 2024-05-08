@@ -4,6 +4,8 @@ import { VXETable } from 'vxe-table';
 const vxeTable = {
   table: {
     border: true,
+    // border: 'inner',
+    round: true,
     stripe: true,
     columnConfig: {
       resizable: true,

@@ -2,7 +2,7 @@
  * @Author: xuhongling
  * @Date:   2022-11-12 10:37:34
  * @Last Modified by:   xuhongling
- * @Last Modified time: 2022-11-12 14:05:08
+ * @Last Modified time: 2024-05-08 14:27:06
  */
 import { ref, unref, nextTick } from 'vue';
 import Map from 'ol/Map';
@@ -15,7 +15,8 @@ import * as olInteraction from 'ol/interaction';
 const globalMap = ref(null);
 
 // 初始化地图
-export function initBasicMap(target) {
+const initBasicMap = async (target) => {
+  await nextTick();
   const wrapEl: any = unref(target);
   if (!wrapEl) {
     return;
@@ -54,12 +55,7 @@ export function initBasicMap(target) {
     });
   olMap.removeInteraction(dblClickInteraction);
 
-  nextTick(() => {
-    // openlayers 第一次加载黑屏修复，重新加载地图
-    setTimeout(() => {
-      olMap.updateSize();
-    }, 40);
-  });
+  // olMap.updateSize(); // openlayers 第一次加载黑屏修复，重新加载地图
 
   // 地图鼠标经过小手样式
   olMap.on('pointermove', (event: any) => {
@@ -76,6 +72,16 @@ export function initBasicMap(target) {
 };
 
 // 返回地图对象，供调用的组件使用
-export function getGlobalMap() {
+const getGlobalMap = () => {
   return globalMap.value;
+}
+
+const clearGlobalMap = () => {
+  globalMap.value = null;
+}
+
+export {
+  initBasicMap,
+  getGlobalMap,
+  clearGlobalMap
 }

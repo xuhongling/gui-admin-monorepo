@@ -22,6 +22,18 @@
       </div>
     </a-card>
 
+    <a-card title="图标选择器(Iconify)" class="mb-5">
+      <div class="flex justify-around flex-wrap">
+        <IconPicker />
+      </div>
+    </a-card>
+
+    <!-- <a-card title="图标选择器(Svg)" class="mb-5">
+      <div class="flex justify-around flex-wrap">
+        <IconPicker mode="svg" />
+      </div>
+    </a-card> -->
+
     <Alert
       show-icon
       message="推荐使用Iconify组件"
@@ -33,7 +45,7 @@
 
 <script lang="ts" setup>
   import { Alert } from 'ant-design-vue';
-  import { Icon } from '@gui-pkg/components';
+  import { Icon, IconPicker } from '@gui-pkg/components';
   import { openWindow } from '@gui-pkg/utils';
   import { QqCircleFilled, GithubFilled, WechatFilled, AlipayCircleFilled, IeCircleFilled, TaobaoCircleFilled, CodepenCircleFilled } from '@ant-design/icons-vue';
 
