@@ -1,7 +1,7 @@
 {
   "name": "gui-admin-monorepo",
   "private": true,
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": {
     "name": "xuhongling",
     "email": "xuhongling@live.cn",
@@ -31,19 +31,19 @@
     "bin-wrapper": "npm:bin-wrapper-china"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.0",
+    "@config/tsconfig": "workspace:*",
+    "@changesets/cli": "^2.27.1",
     "@config/lint": "workspace:*",
-    "@types/fs-extra": "^11.0.1",
-    "@types/node": "^18.16.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.11.17",
     "cross-env": "^7.0.3",
-    "esno": "^0.16.3",
-    "fs-extra": "^11.1.1",
+    "esno": "^0.17.0",
+    "fs-extra": "^11.2.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
-    "tsconfig": "workspace:*",
-    "turbo": "^1.10.16",
+    "turbo": "1.10.16",
     "typescript": "^5.2.2",
-    "unbuild": "^1.1.2"
+    "unbuild": "^2.0.0"
   },
   "engines": {
     "pnpm": ">=7.0.0",

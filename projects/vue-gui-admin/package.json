@@ -42,7 +42,7 @@
     "@purge-icons/generated": "^0.8.1",
     "@types/mockjs": "^1.0.7",
     "typescript": "^5.2.2",
-    "vite": "4.5.2",
+    "vite": "4.5.3",
     "vue-tsc": "^1.8.27"
   },
   "engines": {

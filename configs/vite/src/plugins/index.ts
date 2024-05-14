@@ -8,6 +8,7 @@ import { configMockPlugin } from './mock'
 import { configCompressPlugin } from './compress'
 import { configVisualizerConfig } from './visualizer'
 import { configSvgIconsPlugin } from './svg-icons'
+import { configUnocssPlugin } from './unocss'
 import { createConfigPlugin } from './config'
 import { configHttpsPlugin } from './https'
 
@@ -26,6 +27,9 @@ export async function configVitePlugins(root: string, viteEnv: ViteEnv, isBuild:
 
   // vite-plugin-html
   vitePlugins.push(await configHtmlPlugin(root, viteEnv, isBuild))
+
+  // unocss
+  vitePlugins.push(configUnocssPlugin())
 
   vitePlugins.push(createConfigPlugin())
 

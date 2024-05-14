@@ -8,6 +8,7 @@
     "prepack": "pnpm unbuild --stub"
   },
   "dependencies": {
+    "@config/tsconfig": "workspace:*",
     "@gui-pkg/utils": "workspace:*",
     "@vitejs/plugin-legacy": "^4.0.1",
     "@vitejs/plugin-vue": "^4.0.0",
@@ -18,16 +19,16 @@
     "picocolors": "^1.0.0",
     "pkg-types": "^1.0.1",
     "rollup-plugin-visualizer": "^5.9.0",
-    "tsconfig": "workspace:*",
-    "vite": "4.5.2",
+    "unocss": "^0.58.3",
+    "vite": "4.5.3",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
-    "vite-plugin-mock": "2.9.6",
+    "vite-plugin-mock": "^2.9.6",
     "vite-plugin-svg-icons": "^2.0.1"
   },
   "devDependencies": {
     "mockjs": "^1.1.0",
-    "rollup": "^3.12.1",
+    "rollup": "^3.29.3",
     "typescript": "^5.2.2",
     "vite-plugin-http2-proxy": "^0.4.1",
     "vite-plugin-mkcert": "1.12.0",
