@@ -5,21 +5,13 @@
 .vxe-toolbar .vxe-tools--wrapper,
 .vxe-toolbar .vxe-tools--operate button:first-child {
   margin: 0;
+  margin-left: 10px;
 }
 
 .vxe-toolbar .vxe-tools--wrapper,
 .vxe-toolbar .vxe-tools--operate .vxe-button {
   margin-left: 1px;
-  border-radius: 0px !important;
-}
-
-.vxe-toolbar .vxe-tools--wrapper,
-.vxe-toolbar .vxe-tools--operate button:first-child {
-  margin-left: 10px;
-}
-
-.vxe-toolbar .type--button {
-  margin-left: 8px !important;
+  border-radius: 0 !important;
 }
 
 .vxe-toolbar .vxe-tools--wrapper,
@@ -28,11 +20,7 @@
   border-radius: 0 !important;
 }
 
-.vxe-toolbar .vxe-tools--operate {
-  margin-left: 20px;
-}
-
-/* .vxe-toolbar .vxe-tools--wrapper,
+.vxe-toolbar .vxe-tools--wrapper,
 .vxe-toolbar .vxe-tools--operate .vxe-custom--wrapper .vxe-button {
-  margin-left: 1px;
-} */
+  margin-left: 10px;
+}

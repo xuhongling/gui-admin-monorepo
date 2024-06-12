@@ -17,7 +17,6 @@ import {
   Rate,
   Empty,
 } from 'ant-design-vue';
-
 import { Button } from '../../button/index';
 
 const componentMap = new Map<ComponentType, Component>();

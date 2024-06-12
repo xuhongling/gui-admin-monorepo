@@ -1,12 +1,15 @@
-import { GridMethods, TableMethods, TableEditMethods, TableValidatorMethods } from 'vxe-table';
+import {GridMethods, TableMethods, TableEditMethods, TableValidatorMethods, VxeGridConstructor, } from 'vxe-table';
 
 export const gridComponentMethodKeys: (
   | keyof GridMethods
   | keyof TableMethods
   | keyof TableEditMethods
   | keyof TableValidatorMethods
+  | keyof VxeGridConstructor
 )[] = [
   // vxe-grid 部分
+  'getRefMaps',
+  'getComputeMaps',
   'dispatchEvent',
   'commitProxy',
   'getFormItems',
@@ -134,6 +137,7 @@ export const gridComponentMethodKeys: (
   // vxe-table-edit部分
   'insert',
   'insertAt',
+  'insertNextAt',
   'remove',
   'removeCheckboxRow',
   'removeRadioRow',
@@ -149,6 +153,7 @@ export const gridComponentMethodKeys: (
   'setEditRow',
   'setEditCell',
   'setSelectCell',
+  'clearEdit',
 
   // vxe-table-validator
   'clearValidate',
