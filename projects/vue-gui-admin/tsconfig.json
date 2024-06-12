@@ -4,6 +4,7 @@
     "target": "esnext",
     "module": "esnext",
     "baseUrl": ".",
+    "isCustomElement": true,
     "paths": {
       "@/*": ["src/*"],
       "#/*": ["types/*"]

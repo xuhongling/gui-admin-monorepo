@@ -66,7 +66,6 @@
     proxyConfig: {
       ajax: {
         query: async ({ page, form }) => {
-          console.log(page, form, 'page, form ');
           const tableListData = await demoListApi({
             pageNum: page.currentPage,
             pageSize: page.pageSize,

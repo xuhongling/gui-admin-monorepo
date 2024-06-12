@@ -231,9 +231,6 @@ importers:
       ant-design-vue:
         specifier: ^3.2.20
         version: 3.2.20(vue@3.3.13)
-      exceljs:
-        specifier: ^4.4.0
-        version: 4.4.0
       sass:
         specifier: ^1.55.0
         version: 1.77.5
@@ -241,11 +238,11 @@ importers:
         specifier: 3.3.13
         version: 3.3.13(typescript@5.4.5)
       vxe-table:
-        specifier: ^4.6.3
-        version: 4.7.9
+        specifier: 4.6.12
+        version: 4.6.12(vue@3.3.13)
       vxe-table-plugin-export-xlsx:
-        specifier: ^4.0.2
-        version: 4.0.2(vxe-table@4.7.9)
+        specifier: 4.0.1
+        version: 4.0.1(vxe-table@4.6.12)
       xe-utils:
         specifier: ^3.5.24
         version: 3.5.26
@@ -4526,13 +4523,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
-
-  /@vxe-ui/core@1.0.0:
-    resolution: {integrity: sha512-LXJgXDzWUUJX5Q2FZlMsVXNHeG69SzK5V1zhWe6B68mAm+dotxa3cUVIuJ1nazrRhqTDKKTm6o+xBp5bQbB8Dw==}
-    dependencies:
-      dom-zindex: 1.0.4
-      xe-utils: 3.5.26
     dev: false
 
   /JSONStream@1.3.5:
@@ -12207,24 +12197,22 @@ packages:
       '@vue/shared': 3.3.13
       typescript: 5.4.5
 
-  /vxe-pc-ui@4.0.4:
-    resolution: {integrity: sha512-kuaFfzBaIshMC73DhwTYIzYUigwfSmdI2t1y6mTfG/xox9DIuB49k4V8R0kusRFxOyDp3Tzp3vVacmHiVQgVtA==}
-    dependencies:
-      '@vxe-ui/core': 1.0.0
-    dev: false
-
-  /vxe-table-plugin-export-xlsx@4.0.2(vxe-table@4.7.9):
-    resolution: {integrity: sha512-KnKxgXpbuV62rdoul6fUCIWqeV6/IdnzdVztcrBgFe94QZlZClvubU9AdNRrGqVqzYFcRJj6FKTY3hfutDsbyg==}
+  /vxe-table-plugin-export-xlsx@4.0.1(vxe-table@4.6.12):
+    resolution: {integrity: sha512-puUOUfptu5ciEiFqTlVni3twLICSbkl87uXOsjZzrEyXJHJS9dYu7ZTD7/DRMqyuWyU3Idg7AekfcdcslP4Y/A==}
     peerDependencies:
       vxe-table: ^4.5.0
     dependencies:
-      vxe-table: 4.7.9
+      vxe-table: 4.6.12(vue@3.3.13)
     dev: false
 
-  /vxe-table@4.7.9:
-    resolution: {integrity: sha512-Ggh+DKOSU4UadBu20vmpOPqorAEq89x1m06/dBFx/tWoSMnTl2RiKC6IBufZTv5iM978itvHK2+LHuhlJywGDw==}
+  /vxe-table@4.6.12(vue@3.3.13):
+    resolution: {integrity: sha512-CJr+LHY5La00ur3bV4i+pUBvfqVlo2WdE9ELnEpf7/8wBdOrwe1niPoGovsAagfCdfA0Esw7F5pCN+1RjV40Ww==}
+    peerDependencies:
+      vue: ^3.2.28
     dependencies:
-      vxe-pc-ui: 4.0.4
+      dom-zindex: 1.0.4
+      vue: 3.3.13(typescript@5.4.5)
+      xe-utils: 3.5.26
     dev: false
 
   /warning@4.0.3:

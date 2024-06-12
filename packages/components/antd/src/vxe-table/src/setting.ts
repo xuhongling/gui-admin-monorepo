@@ -56,4 +56,4 @@ const vxeTable = {
   },
 }
 
-VXETable.setConfig(vxeTable);
+VXETable.setup(vxeTable);

@@ -14,11 +14,10 @@
     "@gui-pkg/hooks": "workspace:*",
     "@gui-pkg/utils": "workspace:*",
     "ant-design-vue": "^3.2.20",
-    "exceljs": "^4.4.0",
     "sass": "^1.55.0",
     "vue": "3.3.13",
-    "vxe-table": "^4.6.3",
-    "vxe-table-plugin-export-xlsx": "^4.0.2",
+    "vxe-table": "4.6.12",
+    "vxe-table-plugin-export-xlsx": "4.0.1",
     "xe-utils": "^3.5.24"
   },
   "devDependencies": {
