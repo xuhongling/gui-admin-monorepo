@@ -6,6 +6,9 @@
   "module": "./index.ts",
   "type": "module",
   "license": "MIT",
+  "scripts": {
+    "clean": "pnpm rimraf node_modules dist .turbo"
+  },
   "dependencies": {
     "@vue/runtime-core": "3.2.47",
     "@vueuse/core": "^9.12.0",

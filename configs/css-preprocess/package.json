@@ -7,6 +7,9 @@
     "tailwind.js",
     "uno.config.ts"
   ],
+  "scripts": {
+    "clean": "pnpm rimraf node_modules dist .turbo"
+  },
   "dependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.33",

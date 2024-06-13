@@ -7,7 +7,7 @@
     "dev": "vite",
     "serve": "npm run dev",
     "build": "rimraf dist && pnpm cross-env NODE_ENV=production vite build",
-    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
+    "clean": "pnpm rimraf node_modules dist .turbo",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -44,8 +44,5 @@
     "typescript": "^5.2.2",
     "vite": "4.5.3",
     "vue-tsc": "^1.8.27"
-  },
-  "engines": {
-    "node": "^14 || >=16"
   }
 }
